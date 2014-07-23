@@ -26,8 +26,7 @@ public class MusicController {
 		System.out.println("Finished Persistence");
 	}
 
-	//this method will pick the first song in the database
-	public void playRandomSong(){
+
 		
 	}
-}
+

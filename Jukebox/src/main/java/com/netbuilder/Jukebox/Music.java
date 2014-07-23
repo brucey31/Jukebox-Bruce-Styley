@@ -72,7 +72,22 @@ public class Music {
 		this.file_Path = file_Path;
 	}
 
+	//This creates a template for the "list what is persisted" method to print out what it has persisted
+		@Override
+		public String toString() {
+			final StringBuilder sb = new StringBuilder();
+			sb.append("Music Database Id: " + idMusic + "\n");
+			sb.append("Title: " + title  + "\n");
+			sb.append("Song Duration: " + length  + "\n");
+			sb.append("Artist: " + artist  + "\n");
+			sb.append("Additional Artist: " + additional_Artist  + "\n");
+			sb.append("Album: " + album  + "\n");
+			sb.append("Year Released: " + year + "\n");
+			sb.append("File Path on Bruce's Laptop: " + file_Path + "\n");
 
+			return sb.toString();
+
+		}
 	
 
 
