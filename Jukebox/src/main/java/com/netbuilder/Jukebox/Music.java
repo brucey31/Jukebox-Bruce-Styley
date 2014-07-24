@@ -10,59 +10,57 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-
 //this is the java map of my Database
 @Entity
-@Table(name="Music")
+@Table(name = "Music")
 public class Music {
-	
+
 	@Id
-	@Column(name ="idMusic")
+	@Column(name = "idMusic")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idMusic;
-	
-	@Column(name= "Title")
+
+	@Column(name = "Title")
 	@NotNull
-	@Size (min=1, max=45)
+	@Size(min = 1, max = 45)
 	private String title;
-	
-	@Column(name= "Length")
+
+	@Column(name = "Length")
 	@NotNull
-	@Size (min=1, max=6)
+	@Size(min = 1, max = 6)
 	private String length;
-	
-	@Column(name= "Artist")
+
+	@Column(name = "Artist")
 	@NotNull
-	@Size (min=1, max=45)
+	@Size(min = 1, max = 45)
 	private String artist;
-	
-	@Column(name= "Additional_Artist")
-	@Size (min=1, max=45)
+
+	@Column(name = "Additional_Artist")
+	@Size(min = 1, max = 45)
 	private String additional_Artist;
-	
-	@Column(name= "Album")
+
+	@Column(name = "Album")
 	@NotNull
-	@Size (min=1, max=45)
+	@Size(min = 1, max = 45)
 	private String album;
-	
-	@Column(name= "Year")
+
+	@Column(name = "Year")
 	private int year;
-	
-	@Column(name= "File_Path")
+
+	@Column(name = "File_Path")
 	@NotNull
-	@Size (min=1, max=150)
-	private String file_Path;
-	
-	// This  default constructor creates a blank copy of Products can be used by another class
-		public Music() {
-		}
-	
-		
-		
+	@Size(min = 1, max = 150)
+	private  String file_Path;
+
+	// This default constructor creates a blank copy of Products can be used by
+	// another class
+	public Music() {
+	}
+
 	// This method makes a copy of the class to be overwritten when its called
-	public Music(String title, String length, String artist, String additional_Artist, String album, int year, String file_Path){
-	
+	public Music(String title, String length, String artist,
+			String additional_Artist, String album, int year, String file_Path) {
+
 		this.title = title;
 		this.length = length;
 		this.artist = artist;
@@ -72,25 +70,23 @@ public class Music {
 		this.file_Path = file_Path;
 	}
 
-	//This creates a template for the "list what is persisted" method to print out what it has persisted
-		@Override
-		public String toString() {
-			final StringBuilder sb = new StringBuilder();
-			sb.append("Music Database Id: " + idMusic + "\n");
-			sb.append("Title: " + title  + "\n");
-			sb.append("Song Duration: " + length  + "\n");
-			sb.append("Artist: " + artist  + "\n");
-			sb.append("Additional Artist: " + additional_Artist  + "\n");
-			sb.append("Album: " + album  + "\n");
-			sb.append("Year Released: " + year + "\n");
-			sb.append("File Path on Bruce's Laptop: " + file_Path + "\n");
+	// This creates a template for the "list what is persisted" method to print
+	// out what it has persisted
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder();
+		sb.append("Music Database Id: " + idMusic + "\n");
+		sb.append("Title: " + title + "\n");
+		sb.append("Song Duration: " + length + "\n");
+		sb.append("Artist: " + artist + "\n");
+		sb.append("Additional Artist: " + additional_Artist + "\n");
+		sb.append("Album: " + album + "\n");
+		sb.append("Year Released: " + year + "\n");
+		sb.append("File Path on Bruce's Laptop: " + file_Path + "\n");
 
-			return sb.toString();
+		return sb.toString();
 
-		}
-	
-
-
+	}
 
 	public int getIdMusic() {
 		return idMusic;
@@ -155,9 +151,7 @@ public class Music {
 	public void setFile_Path(String file_Path) {
 		this.file_Path = file_Path;
 	}
-	
-	
-	
-	
+
+
 
 }
