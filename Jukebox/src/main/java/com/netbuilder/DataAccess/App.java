@@ -1,4 +1,4 @@
-package com.netbuilder.Jukebox;
+package com.netbuilder.DataAccess;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,20 +15,24 @@ import javax.persistence.TypedQuery;
 /**
  * @author Bruce Pannaman
  * @version 1.0
- *
+ * 
  */
 public class App {
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
-		// startDatabase();
+//		 startDatabase();
+		int noOfCoins = 1;
+		for (int i=0 ;i<noOfCoins; i++){
+		populateMoney();}
+
 		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
 		// MusicController.searchByTitle("Confessions (unreleased)");
-		MusicController.playByTitle("Rat In Mi Kitchen");
+		// MusicController.playByTitle("Rat In Mi Kitchen");
 	}
 
 	/**
@@ -121,4 +125,45 @@ public class App {
 
 	}
 
+	/**
+	 * This Method creates a Entity Manager from an Entity Manager factory then
+	 * instantiates MoneyController Class to use method setMoney on it
+	 */
+	public static void populateMoney() {
+		System.out.println("Creating Entity Manager");
+
+		// You need a entity manager factory to make an entity manager which
+		// persists stuff to the database
+
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("MusicPU");
+		System.out.println("Entity Manager Factory Created");
+		EntityManager em = emf.createEntityManager();
+
+		// instantiates MoneyController
+		MoneyController monc = new MoneyController(em);
+
+		if (em != null) {
+			System.out.println("Entity Manager created successfully");
+		}
+
+		List<Money> money = setMoney();
+		System.out.println("Money Populated");
+
+		monc.persistNewMoney(money);
+		em.close();
+
+	}
+
+	/**
+	 * This method provides 25p to persist to the Money table of my database
+	 * 
+	 * @return money
+	 */
+	public static List<Money> setMoney() {
+		List<Money> money = new ArrayList<Money>();
+		money.add(new Money(25));
+		return money;
+
+	}
 }

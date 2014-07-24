@@ -1,4 +1,4 @@
-package com.netbuilder.Jukebox;
+package com.netbuilder.DataAccess;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
