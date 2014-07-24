@@ -11,6 +11,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 //this is the java map of my Database
+/**
+ * This class my POJO for the music table in the database
+ * @author Bruce Pannaman
+ * @version 1.0
+ * @Entity
+ * @Table
+ *
+ */
 @Entity
 @Table(name = "Music")
 public class Music {
@@ -54,10 +62,23 @@ public class Music {
 
 	// This default constructor creates a blank copy of Products can be used by
 	// another class
+	/**
+	 * This is a blank constructor
+	 */
 	public Music() {
 	}
 
 	// This method makes a copy of the class to be overwritten when its called
+	/**
+	 * This method makes a copy of the class to be overwritten when its called
+	 * @param title
+	 * @param length
+	 * @param artist
+	 * @param additional_Artist
+	 * @param album
+	 * @param year
+	 * @param file_Path
+	 */
 	public Music(String title, String length, String artist,
 			String additional_Artist, String album, int year, String file_Path) {
 
@@ -72,6 +93,8 @@ public class Music {
 
 	// This creates a template for the "list what is persisted" method to print
 	// out what it has persisted
+	
+
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();

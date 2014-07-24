@@ -126,6 +126,7 @@ public class MusicController {
 		for (Music music : list) {
 			System.out.println("\nWe Found Match(s)\n");
 			System.out.println(music.toString());
+			
 		}
 
 		if (Music.class.toString().equals(null)) {
@@ -138,7 +139,7 @@ public class MusicController {
 	/**
 	 * @param Title
 	 * @SuppressWarnings("restriction")
-	 * @exception (IO Exception) based on local computer filepaths
+	 * @exception (IO Exception) based on local computer file path
 	 */
 	
 	public static void playByTitle(String Title) {
