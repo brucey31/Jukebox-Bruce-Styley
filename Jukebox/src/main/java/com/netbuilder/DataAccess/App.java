@@ -24,14 +24,17 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
-//		 startDatabase();
-		int noOfCoins = 1;
-		for (int i=0 ;i<noOfCoins; i++){
-		populateMoney();}
+		// startDatabase();
+
+//		populateMoney(20);
+		populatePurchase();
+
+		MoneyController.countMoney();
 
 		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
 		// MusicController.searchByTitle("Confessions (unreleased)");
+
 		// MusicController.playByTitle("Rat In Mi Kitchen");
 	}
 
@@ -129,7 +132,7 @@ public class App {
 	 * This Method creates a Entity Manager from an Entity Manager factory then
 	 * instantiates MoneyController Class to use method setMoney on it
 	 */
-	public static void populateMoney() {
+	public static void populateMoney(int moneyEntered) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -147,7 +150,7 @@ public class App {
 			System.out.println("Entity Manager created successfully");
 		}
 
-		List<Money> money = setMoney();
+		List<Money> money = setMoney(moneyEntered);
 		System.out.println("Money Populated");
 
 		monc.persistNewMoney(money);
@@ -160,10 +163,41 @@ public class App {
 	 * 
 	 * @return money
 	 */
-	public static List<Money> setMoney() {
+	public static List<Money> setMoney(int amountEntered) {
 		List<Money> money = new ArrayList<Money>();
-		money.add(new Money(25));
+		money.add(new Money(amountEntered));
 		return money;
 
+	}
+	
+	public static void populatePurchase(){
+		System.out.println("Creating Entity Manager");
+
+		// You need a entity manager factory to make an entity manager which
+		// persists stuff to the database
+
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("MusicPU");
+		System.out.println("Entity Manager Factory Created");
+		EntityManager em = emf.createEntityManager();
+
+		// instantiates MoneyController
+		MoneyController monc = new MoneyController(em);
+
+		if (em != null) {
+			System.out.println("Entity Manager created successfully");
+		}
+
+		List<Money> purchase = setPurchase();
+		System.out.println("Money Populated");
+
+		monc.persistNewMoney(purchase);
+		em.close();
+	}
+	
+	public static List<Money> setPurchase(){
+		List<Money>purchase = new ArrayList<Money>();
+		purchase.add(new Money(-25));
+		return purchase;
 	}
 }
