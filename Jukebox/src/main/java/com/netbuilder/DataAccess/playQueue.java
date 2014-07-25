@@ -28,6 +28,7 @@ public class playQueue {
 	@Column(name = "idplayQueue")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idplayQueue;
+	
 
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "Music_idMusic", referencedColumnName = "idMusic") })

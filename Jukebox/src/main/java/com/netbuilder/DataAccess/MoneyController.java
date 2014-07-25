@@ -23,7 +23,7 @@ public class MoneyController {
 	 */
 	public void persistNewMoney(List<Money> list) {
 		try {
-			
+
 			System.out.println("Beginning persistance");
 			em.getTransaction().begin();
 
@@ -37,15 +37,15 @@ public class MoneyController {
 			e.printStackTrace();
 		}
 	}
-	
-	public void persistPurchase(List<Money> list){
-try {
-			
+
+	public void persistPurchase(List<Money> list) {
+		try {
+
 			System.out.println("Beginning persistance");
 			em.getTransaction().begin();
 
-			for (Money money : list) {
-				em.persist(money);
+			for (Money purchase : list) {
+				em.persist(purchase);
 				em.getTransaction().commit();
 				System.out.println("Finished Persistence");
 			}
@@ -54,15 +54,18 @@ try {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * This Variable is very important as it returns the total amount of money held in the jukebox and will be shown in the GUI
+	 * This Variable is very important as it returns the total amount of money
+	 * held in the jukebox and will be shown in the GUI
 	 */
-	static double totalMoney = 0 ;
+	static double totalMoney = 0;
+
 	/**
-	 * This method querys the database and sees how much money is in it and puts this total to totalMoney above
+	 * This method querys the database and sees how much money is in it and puts
+	 * this total to totalMoney above
 	 */
-	public static void countMoney(){
+	public static void countMoney() {
 
 		// You need a entity manager factory to make an entity manager which
 		// persists stuff to the database
@@ -74,12 +77,13 @@ try {
 		// the start of the conversation between java and database
 		em.getTransaction().begin();
 
-		List<Money> list = em.createQuery("select c from Money c", Money.class).getResultList();
-		for (Money money: list){
-		
-		totalMoney = totalMoney+ money.getAmountAdded();
+		List<Money> list = em.createQuery("select c from Money c", Money.class)
+				.getResultList();
+		for (Money money : list) {
+
+			totalMoney = totalMoney + money.getAmountAdded();
 		}
-		
+
 		System.out.println(totalMoney);
 		em.close();
 	}

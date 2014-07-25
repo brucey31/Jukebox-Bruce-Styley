@@ -1,5 +1,6 @@
 package com.netbuilder.DataAccess;
 
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,15 +26,25 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
 		// startDatabase();
+		//
+		// populateMoney(80);
+		// populatePurchase();
 
-//		populateMoney(20);
-		populatePurchase();
-
-		MoneyController.countMoney();
-
+		// MoneyController.countMoney();
+		//
+//		populatePlayQueue();
+//		MusicController.searchByTitle("Confessions (unreleased)");
+		
+		
+		com.netbuilder.Service.PlayQueueArray pq = new com.netbuilder.Service.PlayQueueArray();
+		pq.addMultipleToQueue(MusicController.searchByTitle("Confessions (unreleased)"));
+		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
+//		pq.playMusicFromQueue();
+		
+		
 		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
-		// MusicController.searchByTitle("Confessions (unreleased)");
+		 
 
 		// MusicController.playByTitle("Rat In Mi Kitchen");
 	}
@@ -131,6 +142,9 @@ public class App {
 	/**
 	 * This Method creates a Entity Manager from an Entity Manager factory then
 	 * instantiates MoneyController Class to use method setMoney on it
+	 * 
+	 * This method is called when the user puts money into the jukebox and the
+	 * database is updated accordingly
 	 */
 	public static void populateMoney(int moneyEntered) {
 		System.out.println("Creating Entity Manager");
@@ -159,7 +173,8 @@ public class App {
 	}
 
 	/**
-	 * This method provides 25p to persist to the Money table of my database
+	 * This method populates an arraylist of the money that the user has put
+	 * into the jukebox so that it can be persisted by populateMoney
 	 * 
 	 * @return money
 	 */
@@ -169,8 +184,13 @@ public class App {
 		return money;
 
 	}
-	
-	public static void populatePurchase(){
+
+	/**
+	 * This Method is called whenever the user makes a purchase and persists
+	 * -25p to the Money table thus adjusting the total of the AmountAdded
+	 * column to be the remaining balance.
+	 */
+	public static void populatePurchase() {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -194,10 +214,70 @@ public class App {
 		monc.persistNewMoney(purchase);
 		em.close();
 	}
-	
-	public static List<Money> setPurchase(){
-		List<Money>purchase = new ArrayList<Money>();
+
+	/**
+	 * This Method creates a new Arraylist with the cost of a purchase (-25p) so
+	 * that it can be persisted by populatePurchase
+	 * 
+	 * @return
+	 */
+	public static List<Money> setPurchase() {
+		List<Money> purchase = new ArrayList<Money>();
 		purchase.add(new Money(-25));
 		return purchase;
+	}
+
+	/**
+	 * This Method will create an entity manager through an entity manager
+	 * factory. Then use persistPlayQueue to persist this playlist to the
+	 * database
+	 */
+	public static void populatePlayQueue() {
+		System.out.println("Creating Entity Manager");
+
+		// You need a entity manager factory to make an entity manager which
+		// persists stuff to the database
+
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("MusicPU");
+		System.out.println("Entity Manager Factory Created");
+		EntityManager em = emf.createEntityManager();
+
+		// instantiates MoneyController
+		playQueueController playQ = new playQueueController(em);
+
+		if (em != null) {
+			System.out.println("Entity Manager created successfully");
+		}
+
+		// I instantiated the music list below so that setTestPlaylist has
+		// something
+		// to reference to, however it exceptions telling me that Column
+		// 'Music_idMusic' cannot be null. I am trying to persist a foreign key,
+		// I think i might need another row in the table 
+		// OR I COULD JUST PRODUCE
+		// A RANDOMER THAT PICKS A RANDOM NUMBER BETWEEN FIRST MUSICID AND THE
+		// LAST THEN PLAYS IT
+
+		 List<Music> music = populateMusicCatalogue();
+		 System.out.println("Music Catalogue Populated");
+		List<playQueue> playlist = setTestPlaylist(music);
+		System.out.println("Playlist Populated");
+
+		playQ.persistPlayQueue(playlist);
+		em.close();
+	}
+
+	/**
+	 * This method creates a test playlist to see if i can persist something to
+	 * the playQueue table and should be commented out once I move onto the
+	 * service layer
+	 * 
+	 * @return
+	 */
+	public static List<playQueue> setTestPlaylist(List<Music> music) {
+		List<playQueue> testPlayList = new ArrayList<playQueue>();
+		testPlayList.add(new playQueue(music.get(0)));
+		return testPlayList;
 	}
 }

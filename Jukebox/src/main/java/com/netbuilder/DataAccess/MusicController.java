@@ -105,7 +105,7 @@ public class MusicController {
 	/**
 	 * @param searchCriteria
 	 */
-	public static void searchByTitle(String searchCriteria) {
+	public static List<Music> searchByTitle(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -132,6 +132,8 @@ public class MusicController {
 		if (Music.class.toString().equals(null)) {
 			System.out.println("I'm Sorry I found no such songs");
 		}
+		
+		return list;
 
 	}
 
