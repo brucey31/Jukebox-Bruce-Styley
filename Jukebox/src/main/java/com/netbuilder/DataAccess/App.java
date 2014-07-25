@@ -1,6 +1,5 @@
 package com.netbuilder.DataAccess;
 
-
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,6 +11,7 @@ import javax.persistence.Parameter;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import com.netbuilder.Service.*;
 
 /**
  * @author Bruce Pannaman
@@ -25,28 +25,30 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
-		// startDatabase();
-		//
-		// populateMoney(80);
+//		 startDatabase();
+//		
+//		 populateMoney(80);
 		// populatePurchase();
 
 		// MoneyController.countMoney();
 		//
-//		populatePlayQueue();
-//		MusicController.searchByTitle("Confessions (unreleased)");
+		// populatePlayQueue();
 		
-		
-		com.netbuilder.Service.PlayQueueArray pq = new com.netbuilder.Service.PlayQueueArray();
-		pq.addMultipleToQueue(MusicController.searchByTitle("Confessions (unreleased)"));
+
+		PlayQueueArray pq = new PlayQueueArray();
+		pq.addMultipleToQueue(MusicController
+				.searchByTitle("Confessions (unreleased)"));
 		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
-//		pq.playMusicFromQueue();
 		
+//		pq.playSongsFromQueue(0);
+		pq.playEntirePlaylist();
 		
+
 		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
-		 
+		// MusicController.searchByTitle("Confessions (unreleased)");
 
-		// MusicController.playByTitle("Rat In Mi Kitchen");
+//		 MusicController.playByTitle("Rat In Mi Kitchen");
 	}
 
 	/**
@@ -91,12 +93,12 @@ public class App {
 	 */
 	public static List<Music> populateMusicCatalogue() {
 		List<Music> music = new ArrayList<Music>();
-		music.add(new Music("ThunderStruck", "04:52", "ACDC", null,
+		music.add(new Music("ThunderStruck",(long)292000, "ACDC", null,
 				"Back in Black", 1980,
 				"/Users/Brucee/Music/iTunes/iTunes Music/ACDC/Unknown Album/Thunderstruck.wav"));
 		music.add(new Music(
 				"Rat In Mi Kitchen",
-				"06:59",
+				(long)419000,
 				"UB40",
 				null,
 				"Houses",
@@ -104,7 +106,7 @@ public class App {
 				"/Users/Brucee/Music/Brucee's ITunes/iTunes Media/Music/UB40/Unknown Album/Rat In Mi Kitchen.wav"));
 		music.add(new Music(
 				"Blood, Toil, Tears & Sweat",
-				"05:10",
+				(long)310000,
 				"Winston Churchill",
 				null,
 				"Churchill Motivational Speeches",
@@ -112,7 +114,7 @@ public class App {
 				"/Users/Brucee/Music/iTunes/iTunes Music/Winston Churchill/Churchill Motivational Speeches/Blood, Toil, Tears & Sweat.wav"));
 		music.add(new Music(
 				"Beat It",
-				"04:18",
+				(long)258000,
 				"Michael Jackson",
 				null,
 				"Number Ones [UK]",
@@ -120,7 +122,7 @@ public class App {
 				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones [UK]/04 Beat It.wav"));
 		music.add(new Music(
 				"Confessions (unreleased)",
-				"04:21",
+				(long)261000,
 				"City and Colour",
 				"Dallas Green",
 				"Live",
@@ -128,7 +130,7 @@ public class App {
 				"/Users/Brucee/Music/iTunes/iTunes Music/City and Colour/Live/06 Confessions (unreleased).wav"));
 		music.add(new Music(
 				"Good Vibrations",
-				"03:37",
+				(long)217000,
 				"Beach Boys",
 				null,
 				"Best Beach Boys Album",
@@ -254,13 +256,13 @@ public class App {
 		// something
 		// to reference to, however it exceptions telling me that Column
 		// 'Music_idMusic' cannot be null. I am trying to persist a foreign key,
-		// I think i might need another row in the table 
+		// I think i might need another row in the table
 		// OR I COULD JUST PRODUCE
 		// A RANDOMER THAT PICKS A RANDOM NUMBER BETWEEN FIRST MUSICID AND THE
 		// LAST THEN PLAYS IT
 
-		 List<Music> music = populateMusicCatalogue();
-		 System.out.println("Music Catalogue Populated");
+		List<Music> music = populateMusicCatalogue();
+		System.out.println("Music Catalogue Populated");
 		List<playQueue> playlist = setTestPlaylist(music);
 		System.out.println("Playlist Populated");
 

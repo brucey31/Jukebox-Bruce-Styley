@@ -35,8 +35,8 @@ public class Music {
 
 	@Column(name = "Length")
 	@NotNull
-	@Size(min = 1, max = 6)
-	private String length;
+	
+	private long length;
 
 	@Column(name = "Artist")
 	@NotNull
@@ -79,7 +79,7 @@ public class Music {
 	 * @param year
 	 * @param file_Path
 	 */
-	public Music(String title, String length, String artist,
+	public Music(String title, Long length, String artist,
 			String additional_Artist, String album, int year, String file_Path) {
 
 		this.title = title;
@@ -127,11 +127,11 @@ public class Music {
 		this.title = title;
 	}
 
-	public String getLength() {
+	public Long getLength() {
 		return length;
 	}
 
-	public void setLength(String length) {
+	public void setLength(Long length) {
 		this.length = length;
 	}
 
