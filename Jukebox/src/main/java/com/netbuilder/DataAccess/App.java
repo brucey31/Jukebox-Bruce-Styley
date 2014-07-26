@@ -35,20 +35,26 @@ public class App {
 		// populatePlayQueue();
 		
 
-		PlayQueueArray pq = new PlayQueueArray();
-		pq.addMultipleToQueue(MusicController
-				.searchByTitle("Confessions (unreleased)"));
-		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
+//		PlayQueueArray pq = new PlayQueueArray();
+//		pq.addMultipleToQueue(MusicController
+//				.searchByTitle("Confessions (unreleased)"));
+//		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
+		
+		RandomPlayQueueArray rpq = new RandomPlayQueueArray(null);
+		rpq.SetOffShufflePlaylist();
+			
+		
+		MICHEAL JACKSON WONT PLAY - FILE NOT FOUND EXCEPTION
 		
 //		pq.playSongsFromQueue(0);
-		pq.playEntirePlaylist();
+ 
 		
 
 		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
 		// MusicController.searchByTitle("Confessions (unreleased)");
 
-//		 MusicController.playByTitle("Rat In Mi Kitchen");
+//		 MusicController.playByTitle("Beat It");
 	}
 
 	/**
@@ -119,7 +125,7 @@ public class App {
 				null,
 				"Number Ones [UK]",
 				1986,
-				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones [UK]/04 Beat It.wav"));
+				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones [UK]/Beat It.wav"));
 		music.add(new Music(
 				"Confessions (unreleased)",
 				(long)261000,

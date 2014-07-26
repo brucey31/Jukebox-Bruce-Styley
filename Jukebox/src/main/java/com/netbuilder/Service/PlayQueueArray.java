@@ -24,10 +24,13 @@ import com.netbuilder.DataAccess.Music;
  * 
  */
 public class PlayQueueArray {
-
-	public List<Music> playQueue = new ArrayList<Music>();
 	
-	int songAdded = 3;
+	
+
+	//This ArrayList is protected so that it can be used in subsequent children... Go PolyMorphism!!
+	protected List<Music> playQueue = new ArrayList<Music>();
+	
+
 
 	/**
 	 * This Method will add an int to the playQueue array that will refer to a
@@ -101,7 +104,7 @@ public class PlayQueueArray {
 				InputStream in = new FileInputStream(soundFile);
 				AudioStream audioStream = new AudioStream(in);
 				AudioPlayer.player.start(audioStream);
-				
+			
 
 			} catch (FileNotFoundException e) {
 
@@ -129,8 +132,8 @@ public void playEntirePlaylist(){
 		try {
 			Thread.sleep(playQueue.get(i).getLength());
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
 		
 		
