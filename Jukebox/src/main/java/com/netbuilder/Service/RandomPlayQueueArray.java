@@ -10,7 +10,8 @@ import com.netbuilder.DataAccess.Music;
 
 /**
  * This class is a child of PlayQueueArray because they can share the same list
- * playQueue and  calls the same methods (playSongsFromQueue) that take different inputs
+ * playQueue and calls the same methods (playSongsFromQueue) that take different
+ * inputs
  * 
  * Method RandomPlayQueueArray
  * 
@@ -20,14 +21,11 @@ import com.netbuilder.DataAccess.Music;
  */
 public class RandomPlayQueueArray extends PlayQueueArray {
 
-	// here we have created a new entity manager that will persist our data
-	private EntityManager em;
 	
-	public RandomPlayQueueArray(EntityManager em) {
-		this.em = em;
-	}
+
 	// Here is the Boolean which stops the while loop in RandomPlayQueueArray
 	private boolean stopRandomMode = true;
+
 	// this needs to pull the amount of music entities in the database to select
 	// the max limit of the music id randomer
 	/**
@@ -38,7 +36,16 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 	 * @return
 	 */
 	public List<Music> SetOffShufflePlaylist() {
+		System.out.println("Creating Entity Manager");
 
+		// You need a entity manager factory to make an entity manager which
+		// persists stuff to the database
+
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("MusicPU");
+		System.out.println("Entity Manager Factory Created");
+		EntityManager em = emf.createEntityManager();
+		// the start of the conversation between java and database
 		// the start of the conversation between java and database
 		em.getTransaction().begin();
 
@@ -60,27 +67,34 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 
 				// needs to pick a song from the list at random
 				int randomSongId = (int) (Math.random() * ((list.size() - 1) + 1));
-				//this line will add that track we chose at random to the playQueue
+				// this line will add that track we chose at random to the
+				// playQueue
 				playQueue.add(list.get(randomSongId));
 			}
-			System.out.println(playQueue);
-			
-			//this playListStarter makes sure that the method moves onto the next track once it has finished the playSongsFromQueue method
+			System.out.println("Below is the auto-selected shuffle playlist" + playQueue);
+
+			// this playListStarter makes sure that the method moves onto the
+			// next track once it has finished the playSongsFromQueue method
+			// It is a placeholder for playQueue created randomly above
 			int playListStarter = 0;
-			
-			//this for loop will play each song until it is finished and then play the next one
+
+			// this for loop will play each song until it is finished and then
+			// play the next one
 			for (int j = 0; j <= playQueue.size(); j++) {
+				
+				//this method isn't in this class but a parent class EXAMPLE OF POLYMORPHISM
 				playSongsFromQueue(playListStarter);
-				//wait for the end of the song before replaying the for loop and doing the next one
+				// wait for the end of the song before replaying the for loop
+				// and doing the next one
 				try {
 					Thread.sleep(playQueue.get(playListStarter).getLength());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-					
+
 				}
 				playListStarter++;
 			}
-			
+
 		}
 		return playQueue;
 	}

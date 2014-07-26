@@ -11,49 +11,50 @@ import javax.persistence.Parameter;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import com.netbuilder.Service.*;
+import com.netbuilder.Presentation.*;
 
 /**
  * @author Bruce Pannaman
  * @version 1.0
  * 
  */
-public class App {
+public class JukeBox {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
-//		 startDatabase();
-//		
-//		 populateMoney(80);
+//startDatabase();
+//populateMoney(30);
 		// populatePurchase();
 
 		// MoneyController.countMoney();
-		//
-		// populatePlayQueue();
 		
+//		 populateTestPlayQueue();
+		
+//
+		PlayQueueArray pq = new PlayQueueArray();
+//
+		 MusicController.searchByArtist("ACDC");
+		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
+		
+		MusicController.searchByTitle("Confessions (unreleased)");
+		pq.addMultipleToQueue(MusicController
+				.searchByTitle("Confessions (unreleased)"));
+		
+		pq.playEntirePlaylist();
+		
+		
+//		RandomPlayQueueArray rpq = new RandomPlayQueueArray();
+//		rpq.SetOffShufflePlaylist();
 
-//		PlayQueueArray pq = new PlayQueueArray();
-//		pq.addMultipleToQueue(MusicController
-//				.searchByTitle("Confessions (unreleased)"));
-//		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
-		
-		RandomPlayQueueArray rpq = new RandomPlayQueueArray(null);
-		rpq.SetOffShufflePlaylist();
-			
-		
-		MICHEAL JACKSON WONT PLAY - FILE NOT FOUND EXCEPTION
-		
+//		ClientView cw = new ClientView();
+//		cw.setupClient();
 //		pq.playSongsFromQueue(0);
- 
-		
-
-		// MusicController.searchByArtist("ACDC");
 		// MusicController.searchByAlbum("Number Ones [UK]");
-		// MusicController.searchByTitle("Confessions (unreleased)");
-
 //		 MusicController.playByTitle("Beat It");
 	}
 
@@ -125,7 +126,7 @@ public class App {
 				null,
 				"Number Ones [UK]",
 				1986,
-				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones [UK]/Beat It.wav"));
+				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones (UK)/Beat It.wav"));
 		music.add(new Music(
 				"Confessions (unreleased)",
 				(long)261000,
@@ -240,7 +241,7 @@ public class App {
 	 * factory. Then use persistPlayQueue to persist this playlist to the
 	 * database
 	 */
-	public static void populatePlayQueue() {
+	public static void populateTestPlayQueue() {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
