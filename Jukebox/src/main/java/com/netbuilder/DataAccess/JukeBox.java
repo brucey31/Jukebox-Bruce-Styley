@@ -36,23 +36,23 @@ public class JukeBox {
 //		 populateTestPlayQueue();
 		
 //
-		PlayQueueArray pq = new PlayQueueArray();
+//		PlayQueueArray pq = new PlayQueueArray();
 //
-		 MusicController.searchByArtist("ACDC");
-		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
-		
-		MusicController.searchByTitle("Confessions (unreleased)");
-		pq.addMultipleToQueue(MusicController
-				.searchByTitle("Confessions (unreleased)"));
-		
-		pq.playEntirePlaylist();
+//		 MusicController.searchByArtist("ACDC");
+//		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
+//		
+//		MusicController.searchByTitle("Confessions (unreleased)");
+//		pq.addMultipleToQueue(MusicController
+//				.searchByTitle("Confessions (unreleased)"));
+//		
+//		pq.playEntirePlaylist();
 		
 		
 //		RandomPlayQueueArray rpq = new RandomPlayQueueArray();
 //		rpq.SetOffShufflePlaylist();
 
-//		ClientView cw = new ClientView();
-//		cw.setupClient();
+		ClientView cw = new ClientView();
+		cw.setupClient();
 //		pq.playSongsFromQueue(0);
 		// MusicController.searchByAlbum("Number Ones [UK]");
 //		 MusicController.playByTitle("Beat It");
