@@ -1,11 +1,14 @@
 package com.netbuilder.Presentation;
 
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +16,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentListener;
+
+import com.netbuilder.DataAccess.MoneyController;
 
 /**
  * This Class contains the GUI screen for the standard user functionality (Not
@@ -23,30 +29,54 @@ import javax.swing.JTextField;
  * 
  */
 public class ClientView {
+	
+	//Attributes for the GUI
+
+JTextField search = new JTextField("What do you want to Listen to",
+		JTextField.CENTER);
+
+
 
 	/**
 	 * this is the main view that the client will see
 	 */
 	public void setupClient() {
 
-		// this is the money balance part of the display, check balance and top
-		// up here
-		JLabel moneyBalance = new JLabel("e.g. 80p", JLabel.CENTER);
+		// this is the money balance part of the display, this label will display the total balance available
+		JLabel moneyBalance = new JLabel("Credit Available " + String.valueOf(MoneyController.countMoney())+ "Pence");
 		moneyBalance.setVisible(true);
-		moneyBalance.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		moneyBalance.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		moneyBalance.setBackground(Color.BLACK);
 		moneyBalance.setForeground(Color.BLUE);
+		
+		//this coin button will be the button to add more money
+//		ImageIcon PlayButton = new ImageIcon("Coin.png");
+		JButton coins = new JButton("+$+");
+		coins.setOpaque(false);
+		coins.setFont(new Font("Sans-Serif", Font.PLAIN,10));
+		coins.setPreferredSize(new Dimension(30,30));
 
+
+		//this small discreet Button will get you to the admin page to set shuffle mode
+		JButton admin = new JButton("•");
+		admin.setOpaque(false);
+		admin.setFont(new Font("Sans-Serif", Font.PLAIN,10));
+		admin.setPreferredSize(new Dimension(20,20));
+		
 		JPanel money = new JPanel();
 		money.setOpaque(true);
 		money.setBackground(Color.darkGray);
 		money.setPreferredSize(new Dimension(1400, 40));
 		money.add(moneyBalance);
+		money.add(coins);
+		
 
 		// This is the playButton JButton
 		ImageIcon PlayButton = new ImageIcon("Play Button.png");
 		JButton play = new JButton("", PlayButton);
 		play.setOpaque(false);
+		play.setVisible(true);
+		play.setBackground(Color.darkGray);
 		play.setPreferredSize(new Dimension(180, 180));
 
 		// This is the pauseButton JButton
@@ -71,24 +101,19 @@ public class ClientView {
 		ButtonControl.add(pause);
 		ButtonControl.add(skip);
 
+		
+		
 		// This is the search bar for clients to search for music
-		JTextField search = new JTextField("What do you want to Listen to?",
-				JTextField.CENTER);
+		ActionListener searchInput = new SearchFuntionListener();
+		
 		search.setVisible(true);
 		search.setEditable(true);
 		search.setBackground(Color.lightGray);
 		search.setForeground(Color.DARK_GRAY);
 		search.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		search.addActionListener(searchInput);
+		search.setHorizontalAlignment(JTextField.CENTER);
 
-		// MONEY BALENCE HAS TO GO AT TOP USE FLOW LAYOUT FOR THE MAIN HOLDER
-		// BUT MAKE NEW JPANELS TO GROUP PARTS TOGETHER SUCH AS TITLE AND SEARCH
-		// PANELS
-
-		// This Button will start the search
-		JButton searchButton = new JButton("Search");
-		searchButton.setSize(50, 20);
-		searchButton.setVisible(true);
-		searchButton.setBackground(Color.darkGray);
 
 		// this panel contains everything to do with searching for music
 		JPanel searchBar = new JPanel();
@@ -97,13 +122,12 @@ public class ClientView {
 		searchBar.setOpaque(true);
 		searchBar.setBackground(Color.darkGray);
 		searchBar.setSize(200, 60);
-		searchBar.add(searchButton);
 		searchBar.add(search);
 
 		// these are the buttons that will be called when the search result is
 		// found
 		JButton firstResult = new JButton();
-		firstResult.setPreferredSize(new Dimension(800, 40));
+		firstResult.setPreferredSize(new Dimension(800, 50));
 		firstResult.setVisible(true);
 		firstResult.setBackground(Color.darkGray);
 
@@ -180,6 +204,7 @@ public class ClientView {
 		holder.setSize(1400, 800);
 		holder.setBackground(Color.darkGray);
 		holder.add(money);
+		money.add(admin);
 		holder.add(ButtonControl);
 
 		holder.add(searchBar);

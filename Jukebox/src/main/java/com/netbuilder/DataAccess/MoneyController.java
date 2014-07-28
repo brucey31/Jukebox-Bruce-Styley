@@ -64,8 +64,9 @@ public class MoneyController {
 	/**
 	 * This method querys the database and sees how much money is in it and puts
 	 * this total to totalMoney above
+	 * @return 
 	 */
-	public static void countMoney() {
+	public static double countMoney() {
 
 		// You need a entity manager factory to make an entity manager which
 		// persists stuff to the database
@@ -85,7 +86,9 @@ public class MoneyController {
 		}
 
 		System.out.println(totalMoney);
+	
 		em.close();
+		return totalMoney;
 	}
 
 }
