@@ -2,20 +2,32 @@ package com.netbuilder.Presentation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.netbuilder.DataAccess.*;
+import javax.swing.AbstractAction;
 
-import javax.swing.JButton;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
-public class SearchFuntionListener extends ClientView implements ActionListener{
+/**
+ * This class will deal with all action listeners and subsequent business logic coming from text being entered to the search bar
+ * @author Bruce Pannaman
+ * @version1.0
+ *
+ */
+public class SearchFuntionListener extends AbstractAction{
 
 	public void actionPerformed(ActionEvent evt) {
 
-		String clickedButtonLabel = super.search.getSelectedText();
+		String inputFromSearchBar = com.netbuilder.Presentation.ClientView.search.getText();
 
-		// get it to get something that is typed in not just default value
-
-		System.out.println(clickedButtonLabel);
+		System.out.println(inputFromSearchBar + "was entered into searchbar");
+		
+		MusicController.searchByTitle(inputFromSearchBar);
+		MusicController.searchByArtist(inputFromSearchBar);
+		MusicController.searchByAlbum(inputFromSearchBar);
+		
+		
+		I have now searched for music by using the search bar
+		
+		
+		
 
 		
 	}

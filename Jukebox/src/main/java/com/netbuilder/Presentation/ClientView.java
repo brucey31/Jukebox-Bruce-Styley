@@ -32,7 +32,7 @@ public class ClientView {
 	
 	//Attributes for the GUI
 
-JTextField search = new JTextField("What do you want to Listen to",
+static JTextField search = new JTextField("What do you want to Listen to",
 		JTextField.CENTER);
 
 
