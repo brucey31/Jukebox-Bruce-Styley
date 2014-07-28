@@ -13,6 +13,8 @@ import javax.persistence.Persistence;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
+import com.netbuilder.DataAccess.JukeBox;
+import com.netbuilder.DataAccess.MoneyController;
 import com.netbuilder.DataAccess.Music;
 
 /**
@@ -57,7 +59,7 @@ public class PlayQueueArray {
 			playQueue.add(music);
 		}
 		System.out.println("This is the play queue as it stands" + playQueue);
-
+		JukeBox.populateMoney(-25);
 		return playQueue;
 	}
 

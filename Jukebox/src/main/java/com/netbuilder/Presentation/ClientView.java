@@ -1,7 +1,5 @@
 package com.netbuilder.Presentation;
 
-
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -29,47 +27,47 @@ import com.netbuilder.DataAccess.MoneyController;
  * 
  */
 public class ClientView {
-	
-	//Attributes for the GUI
 
-static JTextField search = new JTextField("What do you want to Listen to",
-		JTextField.CENTER);
+	// Attributes for the GUI
+	static JTextField search = new JTextField("What do you want to Listen to",
+			JTextField.CENTER);
 
-
+	static String resultString;
 
 	/**
 	 * this is the main view that the client will see
 	 */
-	public void setupClient() {
+	public static void SetupClient() {
 
-		// this is the money balance part of the display, this label will display the total balance available
-		JLabel moneyBalance = new JLabel("Credit Available " + String.valueOf(MoneyController.countMoney())+ "Pence");
+		// this is the money balance part of the display, this label will
+		// display the total balance available
+		JLabel moneyBalance = new JLabel("Credit Available "
+				+ String.valueOf(MoneyController.countMoney()) + "Pence");
 		moneyBalance.setVisible(true);
 		moneyBalance.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		moneyBalance.setBackground(Color.BLACK);
 		moneyBalance.setForeground(Color.BLUE);
-		
-		//this coin button will be the button to add more money
-//		ImageIcon PlayButton = new ImageIcon("Coin.png");
+
+		// this coin button will be the button to add more money
+		// ImageIcon PlayButton = new ImageIcon("Coin.png");
 		JButton coins = new JButton("+$+");
 		coins.setOpaque(false);
-		coins.setFont(new Font("Sans-Serif", Font.PLAIN,10));
-		coins.setPreferredSize(new Dimension(30,30));
+		coins.setFont(new Font("Sans-Serif", Font.PLAIN, 10));
+		coins.setPreferredSize(new Dimension(30, 30));
 
-
-		//this small discreet Button will get you to the admin page to set shuffle mode
+		// this small discreet Button will get you to the admin page to set
+		// shuffle mode
 		JButton admin = new JButton("•");
 		admin.setOpaque(false);
-		admin.setFont(new Font("Sans-Serif", Font.PLAIN,10));
-		admin.setPreferredSize(new Dimension(20,20));
-		
+		admin.setFont(new Font("Sans-Serif", Font.PLAIN, 10));
+		admin.setPreferredSize(new Dimension(20, 20));
+
 		JPanel money = new JPanel();
 		money.setOpaque(true);
 		money.setBackground(Color.darkGray);
 		money.setPreferredSize(new Dimension(1400, 40));
 		money.add(moneyBalance);
 		money.add(coins);
-		
 
 		// This is the playButton JButton
 		ImageIcon PlayButton = new ImageIcon("Play Button.png");
@@ -80,16 +78,16 @@ static JTextField search = new JTextField("What do you want to Listen to",
 		play.setPreferredSize(new Dimension(180, 180));
 
 		// This is the pauseButton JButton
-		 ImageIcon PauseButton = new
-		 ImageIcon("/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Pause Button.png");
-		JButton pause = new JButton("",PauseButton);
+		ImageIcon PauseButton = new ImageIcon(
+				"/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Pause Button.png");
+		JButton pause = new JButton("", PauseButton);
 		pause.setOpaque(false);
 		pause.setPreferredSize(new Dimension(180, 180));
 
 		// This is the Skip Button JButton
-		 ImageIcon SkipButton = new
-		 ImageIcon("/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Skip Button.png");
-		JButton skip = new JButton("",SkipButton);
+		ImageIcon SkipButton = new ImageIcon(
+				"/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Skip Button.png");
+		JButton skip = new JButton("", SkipButton);
 		skip.setOpaque(false);
 
 		// this panel collects the control Buttons
@@ -101,11 +99,9 @@ static JTextField search = new JTextField("What do you want to Listen to",
 		ButtonControl.add(pause);
 		ButtonControl.add(skip);
 
-		
-		
 		// This is the search bar for clients to search for music
-		ActionListener searchInput = new SearchFuntionListener();
-		
+		ActionListener searchInput = new SearchFunctionListener();
+
 		search.setVisible(true);
 		search.setEditable(true);
 		search.setBackground(Color.lightGray);
@@ -113,7 +109,6 @@ static JTextField search = new JTextField("What do you want to Listen to",
 		search.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		search.addActionListener(searchInput);
 		search.setHorizontalAlignment(JTextField.CENTER);
-
 
 		// this panel contains everything to do with searching for music
 		JPanel searchBar = new JPanel();
@@ -124,14 +119,19 @@ static JTextField search = new JTextField("What do you want to Listen to",
 		searchBar.setSize(200, 60);
 		searchBar.add(search);
 
-		// these are the buttons that will be called when the search result is
+		// these are the buttons that will be called when the search result
+		// is
 		// found
-		JButton firstResult = new JButton();
+
+		ActionListener playResult = new ResultListener();
+		JButton firstResult = new JButton(resultString);
 		firstResult.setPreferredSize(new Dimension(800, 50));
 		firstResult.setVisible(true);
 		firstResult.setBackground(Color.darkGray);
+		firstResult.addActionListener(playResult);
 
-		// these are the buttons that will be called when the search result is
+		// these are the buttons that will be called when the search result
+		// is
 		// found
 		JButton secondResult = new JButton();
 		secondResult.setSize(800, 50);
@@ -140,26 +140,30 @@ static JTextField search = new JTextField("What do you want to Listen to",
 
 		// these are the buttons that will be called when the search result is
 		// found
+
 		JButton thirdResult = new JButton();
 		thirdResult.setSize(800, 50);
 		thirdResult.setVisible(true);
 		thirdResult.setBackground(Color.darkGray);
 
-		// these are the buttons that will be called when the search result is
+		// these are the buttons that will be called when the search result
+		// is
 		// found
 		JButton fourthResult = new JButton();
 		fourthResult.setSize(800, 50);
 		fourthResult.setVisible(true);
 		fourthResult.setBackground(Color.darkGray);
 
-		// these are the buttons that will be called when the search result is
+		// these are the buttons that will be called when the search result
+		// is
 		// found
 		JButton fifthResult = new JButton();
 		fifthResult.setBounds(0, 0, 800, 800);
 		fifthResult.setVisible(true);
 		fifthResult.setBackground(Color.darkGray);
 
-		// these are the buttons that will be called when the search result is
+		// these are the buttons that will be called when the search result
+		// is
 		// found
 		JButton sixthResult = new JButton();
 		sixthResult.setSize(800, 50);

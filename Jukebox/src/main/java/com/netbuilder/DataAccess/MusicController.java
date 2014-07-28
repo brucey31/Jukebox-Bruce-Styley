@@ -47,7 +47,7 @@ public class MusicController {
 	/**
 	 * @param searchCriteria
 	 */
-	public static void searchByArtist(String searchCriteria) {
+	public static  List<Music> searchByArtist(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -69,14 +69,14 @@ public class MusicController {
 			System.out.println("\nWe Found Match(s)\n");
 			System.out.println(music.toString());
 		}
-
+		return (List<Music>) list;
 	}
 
 	// this method will find a song by Album in the database
 	/**
 	 * @param searchCriteria
 	 */
-	public static void searchByAlbum(String searchCriteria) {
+	public static List<Music> searchByAlbum(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -97,15 +97,17 @@ public class MusicController {
 		for (Music music : list) {
 			System.out.println("\nWe Found Match(s)\n");
 			System.out.println(music.toString());
+			
 		}
-
+		
+		return (List<Music>) list;
 	}
 
 	// this method will find a song by Song Title in the database
 	/**
 	 * @param searchCriteria
 	 */
-	public static List<Music> searchByTitle(String searchCriteria) {
+	public static  List<Music> searchByTitle(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which

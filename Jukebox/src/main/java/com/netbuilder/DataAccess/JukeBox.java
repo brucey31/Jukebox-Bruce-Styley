@@ -29,7 +29,7 @@ public class JukeBox {
 		System.out.println("Good Morning Music Listeners!");
 //startDatabase();
 //populateMoney(30);
-		// populatePurchase();
+//		 populatePurchase();
 
 		// MoneyController.countMoney();
 		
@@ -52,7 +52,8 @@ public class JukeBox {
 //		rpq.SetOffShufflePlaylist();
 
 		ClientView cw = new ClientView();
-		cw.setupClient();
+		cw.SetupClient();
+	
 //		pq.playSongsFromQueue(0);
 		// MusicController.searchByAlbum("Number Ones [UK]");
 //		 MusicController.playByTitle("Beat It");
@@ -124,7 +125,7 @@ public class JukeBox {
 				(long)258000,
 				"Michael Jackson",
 				null,
-				"Number Ones [UK]",
+				"Number Ones (UK)",
 				1986,
 				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones (UK)/Beat It.wav"));
 		music.add(new Music(
