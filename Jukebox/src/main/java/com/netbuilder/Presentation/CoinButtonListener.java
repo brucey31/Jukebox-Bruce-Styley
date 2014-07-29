@@ -57,7 +57,7 @@ public class CoinButtonListener implements ActionListener {
 			JOptionPane
 			.showConfirmDialog(
 					null,
-					"£1 pence has been added to available balance",
+					"£1 has been added to available balance",
 					"Money Added", JOptionPane.PLAIN_MESSAGE);
 			ClientView.SetupClient();
 		}

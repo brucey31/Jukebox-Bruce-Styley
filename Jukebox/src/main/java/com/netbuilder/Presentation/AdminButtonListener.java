@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class AdminButtonListener implements ActionListener {
 static String password;
@@ -22,13 +24,18 @@ final String setPassword = "admin";
 		BorderLayout setDefaults = new BorderLayout();
 		passwordEntry.setLayout(setDefaults);
 		
+		JLabel label = new JLabel("Enter a password:");
+		JPasswordField pass = new JPasswordField(5);
+		passwordEntry.add(label);
+		passwordEntry.add(pass);
+		
 		password= JOptionPane
 		.showInputDialog(
 				adminEntry,
 				"Entering a Restricted Admin Area\nEnter Password",
 				"");
 		
-		if(password.equals(setPassword)){
+		if(password.equals((setPassword))){
 			AdminView.setupAdmin();
 		}
 		else{
@@ -38,7 +45,7 @@ final String setPassword = "admin";
 					null,
 					"Uh, Uh Uhhh",
 					"Password Incorrect", JOptionPane.PLAIN_MESSAGE);
-		
+			
 		}
 		
 	}

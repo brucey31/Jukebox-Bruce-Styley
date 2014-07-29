@@ -27,26 +27,27 @@ public class JukeBox {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
-//startDatabase();
-//populateMoney(80);
-//
-//
-//		 MoneyController.countMoney();
-//		 
-//		 populatePurchase();
+//		startDatabase();
+	
+//		populateMoney(100);
+
+
+//		MoneyController.countMoney();
+		 
+//		populatePurchase();
 		
-//		 populateTestPlayQueue();
+//		populateTestPlayQueue();
 		
-//
+
 //		PlayQueueArray pq = new PlayQueueArray();
-//
-//		 MusicController.searchByArtist("ACDC");
+
+//		MusicController.searchByArtist("ACDC");
 //		pq.addMultipleToQueue(MusicController.searchByTitle("ThunderStruck"));
-//		
+		
 //		MusicController.searchByTitle("Confessions (unreleased)");
 //		pq.addMultipleToQueue(MusicController
 //				.searchByTitle("Confessions (unreleased)"));
-//		
+		
 //		pq.playEntirePlaylist();
 		
 		
@@ -55,10 +56,10 @@ public class JukeBox {
 
 		ClientView cw = new ClientView();
 		cw.SetupClient();
-//	
+	
 //		pq.playSongsFromQueue(0);
-		// MusicController.searchByAlbum("Number Ones [UK]");
-//		 MusicController.playByTitle("Beat It");
+// 		MusicController.searchByAlbum("Number Ones [UK]");
+//		MusicController.playByTitle("Beat It");
 	}
 
 	/**

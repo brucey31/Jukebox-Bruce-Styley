@@ -111,7 +111,7 @@ public class Music {
 		sb.append("Artist: " + artist + "\n");
 		sb.append("Additional Artist: " + additional_Artist + "\n");
 		sb.append("Album: " + album + "\n");
-		sb.append("Genre" + genre + "\n");
+		sb.append("Genre: " + genre + "\n");
 		sb.append("Year Released: " + year + "\n");
 		sb.append("File Path on Bruce's Laptop: " + file_Path + "\n");
 
