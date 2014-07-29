@@ -35,7 +35,7 @@ public class ClientView {
 	// This string changes what the result buttons say and is changes using
 	// SearchFunctionListener
 	static String resultString;
-	//This is the JFrame that needs to be killed every page refresh
+	// This is the JFrame that needs to be killed every page refresh
 	static JFrame clientControl;
 
 	/**
@@ -53,10 +53,9 @@ public class ClientView {
 		moneyBalance.setForeground(Color.BLUE);
 
 		// this coin button will be the button to add more money
-		// ImageIcon PlayButton = new ImageIcon("Coin.png");
-		
+		ImageIcon CoinButton = new ImageIcon("Coin.png");
 		ActionListener moreMoney = new CoinButtonListener();
-		JButton coins = new JButton("+$+");
+		JButton coins = new JButton("",CoinButton);
 		coins.setOpaque(false);
 		coins.setFont(new Font("Sans-Serif", Font.PLAIN, 10));
 		coins.setPreferredSize(new Dimension(30, 30));
@@ -87,15 +86,13 @@ public class ClientView {
 		play.setPreferredSize(new Dimension(180, 180));
 
 		// This is the pauseButton JButton
-		ImageIcon PauseButton = new ImageIcon(
-				"/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Pause Button.png");
+		ImageIcon PauseButton = new ImageIcon("Pause Button.png");
 		JButton pause = new JButton("", PauseButton);
 		pause.setOpaque(false);
 		pause.setPreferredSize(new Dimension(180, 180));
 
 		// This is the Skip Button JButton
-		ImageIcon SkipButton = new ImageIcon(
-				"/Users/Brucee/Documents/Git Repository/Jukebox-Bruce-Styley/Jukebox/Skip Button.png");
+		ImageIcon SkipButton = new ImageIcon("Skip Button.png");
 		JButton skip = new JButton("", SkipButton);
 		skip.setOpaque(false);
 

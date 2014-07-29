@@ -11,7 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AdminView {
-
+	//ATTRIBUTES
+	//This is globalised so that the admin page can be killed when the go back button is hit
+	static JFrame adminControl;
+	
+	
 	public static void setupAdmin() {
 
 		JLabel test = new JLabel("You Have Reached the Admin page");
@@ -35,6 +39,13 @@ public class AdminView {
 		popPlaylist.setVisible(true);
 		popPlaylist.setPreferredSize(new Dimension(300,50));
 		
+		ActionListener goBackButton = new GoBackListener();
+		JButton GoBack = new JButton("Return to Client Screen");
+		GoBack.setVisible(true);
+		GoBack.setPreferredSize(new Dimension(300,50));
+		GoBack.addActionListener(goBackButton);
+		
+		
 		
 		
 		
@@ -50,9 +61,10 @@ public class AdminView {
 		holder.add(popPlaylist);
 		holder.add(reggaePlaylist);
 		holder.add(speechesPlaylist);
+		holder.add(GoBack);
 		
 
-		JFrame adminControl = new JFrame("Admin Settings");
+		adminControl = new JFrame("Admin Settings");
 		adminControl.setSize(500, 500);
 		adminControl.setVisible(true);
 		adminControl.setContentPane(holder);

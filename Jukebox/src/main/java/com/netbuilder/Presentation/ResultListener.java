@@ -2,12 +2,6 @@ package com.netbuilder.Presentation;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-
-import javax.swing.Timer;
-
-import com.netbuilder.DataAccess.MoneyController;
-import com.netbuilder.DataAccess.Music;
 import com.netbuilder.DataAccess.MusicController;
 import com.netbuilder.Service.PlayQueueArray;
 
