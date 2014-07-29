@@ -28,11 +28,15 @@ import com.netbuilder.DataAccess.MoneyController;
  */
 public class ClientView {
 
-	// Attributes for the GUI
+	// ATTRIBUTES FOR GUI
+	// This search field is used in SearchFunctionListener
 	static JTextField search = new JTextField("What do you want to Listen to",
 			JTextField.CENTER);
-
+	// This string changes what the result buttons say and is changes using
+	// SearchFunctionListener
 	static String resultString;
+	//This is the JFrame that needs to be killed every page refresh
+	static JFrame clientControl;
 
 	/**
 	 * this is the main view that the client will see
@@ -50,17 +54,22 @@ public class ClientView {
 
 		// this coin button will be the button to add more money
 		// ImageIcon PlayButton = new ImageIcon("Coin.png");
+		
+		ActionListener moreMoney = new CoinButtonListener();
 		JButton coins = new JButton("+$+");
 		coins.setOpaque(false);
 		coins.setFont(new Font("Sans-Serif", Font.PLAIN, 10));
 		coins.setPreferredSize(new Dimension(30, 30));
+		coins.addActionListener(moreMoney);
 
 		// this small discreet Button will get you to the admin page to set
 		// shuffle mode
+		ActionListener adminClick = new AdminButtonListener();
 		JButton admin = new JButton("•");
 		admin.setOpaque(false);
 		admin.setFont(new Font("Sans-Serif", Font.PLAIN, 10));
 		admin.setPreferredSize(new Dimension(20, 20));
+		admin.addActionListener(adminClick);
 
 		JPanel money = new JPanel();
 		money.setOpaque(true);
@@ -216,7 +225,7 @@ public class ClientView {
 		holder.add(title);
 
 		// This Jframe will contain everything
-		JFrame clientControl = new JFrame("BruceTunes - By Bruce Pannaman");
+		clientControl = new JFrame("BruceTunes - By Bruce Pannaman");
 		clientControl.setSize(1400, 800);
 		clientControl.setVisible(true);
 		clientControl.setContentPane(holder);

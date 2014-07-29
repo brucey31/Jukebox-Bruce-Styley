@@ -64,13 +64,18 @@ public class MoneyController {
 	/**
 	 * This method querys the database and sees how much money is in it and puts
 	 * this total to totalMoney above
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public static double countMoney() {
 
 		// You need a entity manager factory to make an entity manager which
 		// persists stuff to the database
-
+		
+		// totalMoney needs to be reset at the beginning of each time this
+		// method is called so that count money doesn't double itself the whole
+		// time
+		totalMoney = 0;
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("MusicPU");
 		System.out.println("Entity Manager Factory Created");
@@ -86,7 +91,7 @@ public class MoneyController {
 		}
 
 		System.out.println(totalMoney);
-	
+
 		em.close();
 		return totalMoney;
 	}

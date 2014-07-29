@@ -55,11 +55,12 @@ public class PlayQueueArray {
 	 * @return
 	 */
 	public List<Music> addMultipleToQueue(List<Music> songs) {
+		JukeBox.populatePurchase();
 		for (Music music : songs) {
 			playQueue.add(music);
 		}
 		System.out.println("This is the play queue as it stands" + playQueue);
-		JukeBox.populateMoney(-25);
+		
 		return playQueue;
 	}
 
@@ -84,8 +85,8 @@ public class PlayQueueArray {
 		EntityManager em = emf.createEntityManager();
 		// the start of the conversation between java and database
 		em.getTransaction().begin();
-		// I have fed into this method a list that holds music objects, below I
-		// need to get the title out of the object of index trackCount
+		
+		
 		// Below are tests to check the parameters being inputed to the SQL
 		// Query
 		// System.out.println(playQueue.get(trackCount).toString());
@@ -139,12 +140,12 @@ public class PlayQueueArray {
 
 			// wait for the end of the song before replaying the for loop and
 			// doing the next one
-			try {
-				Thread.sleep(playQueue.get(i).getLength());
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-
-			}
+//			try {
+//				Thread.sleep(playQueue.get(i).getLength());
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//
+//			}
 
 		}
 

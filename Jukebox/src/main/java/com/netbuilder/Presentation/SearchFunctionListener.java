@@ -26,6 +26,7 @@ public class SearchFunctionListener extends AbstractAction {
 	static List<Music> albums;
 
 	public void actionPerformed(ActionEvent evt) {
+		ClientView.clientControl.dispose();
 
 		String inputFromSearchBar = com.netbuilder.Presentation.ClientView.search
 				.getText();

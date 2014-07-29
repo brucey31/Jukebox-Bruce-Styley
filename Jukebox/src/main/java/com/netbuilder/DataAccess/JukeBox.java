@@ -28,10 +28,12 @@ public class JukeBox {
 	public static void main(String[] args) {
 		System.out.println("Good Morning Music Listeners!");
 //startDatabase();
-//populateMoney(30);
+//populateMoney(80);
+//
+//
+//		 MoneyController.countMoney();
+//		 
 //		 populatePurchase();
-
-		// MoneyController.countMoney();
 		
 //		 populateTestPlayQueue();
 		
