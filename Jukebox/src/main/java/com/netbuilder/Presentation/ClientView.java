@@ -144,7 +144,7 @@ public class ClientView {
 		// found
 		JButton secondResult = new JButton();
 		secondResult.setSize(800, 50);
-		secondResult.setVisible(true);
+		secondResult.setVisible(false);
 		secondResult.setBackground(Color.darkGray);
 
 		// these are the buttons that will be called when the search result is
@@ -152,7 +152,7 @@ public class ClientView {
 
 		JButton thirdResult = new JButton();
 		thirdResult.setSize(800, 50);
-		thirdResult.setVisible(true);
+		thirdResult.setVisible(false);
 		thirdResult.setBackground(Color.darkGray);
 
 		// these are the buttons that will be called when the search result
@@ -160,7 +160,7 @@ public class ClientView {
 		// found
 		JButton fourthResult = new JButton();
 		fourthResult.setSize(800, 50);
-		fourthResult.setVisible(true);
+		fourthResult.setVisible(false);
 		fourthResult.setBackground(Color.darkGray);
 
 		// these are the buttons that will be called when the search result
@@ -168,7 +168,7 @@ public class ClientView {
 		// found
 		JButton fifthResult = new JButton();
 		fifthResult.setBounds(0, 0, 800, 800);
-		fifthResult.setVisible(true);
+		fifthResult.setVisible(false);
 		fifthResult.setBackground(Color.darkGray);
 
 		// these are the buttons that will be called when the search result
@@ -176,7 +176,7 @@ public class ClientView {
 		// found
 		JButton sixthResult = new JButton();
 		sixthResult.setSize(800, 50);
-		sixthResult.setVisible(true);
+		sixthResult.setVisible(false);
 		sixthResult.setBackground(Color.darkGray);
 
 		// this JPanel will hold the result panels
