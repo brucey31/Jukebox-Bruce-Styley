@@ -24,7 +24,7 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 	
 
 	// Here is the Boolean which stops the while loop in RandomPlayQueueArray
-	protected boolean stopRandomMode = true;
+	public boolean randomMode = false;
 
 	// this needs to pull the amount of music entities in the database to select
 	// the max limit of the music id randomer
@@ -37,6 +37,8 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 	 */
 	public  List<Music> SetOffShufflePlaylist() {
 		System.out.println("Creating Entity Manager");
+		randomMode = true;
+		System.out.println("Random Mode is " + randomMode);
 
 		// You need a entity manager factory to make an entity manager which
 		// persists stuff to the database
@@ -61,7 +63,7 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 		// length of the Music Catalog going until it is stopped by the boolean
 		// at the top
 
-		while (stopRandomMode) {
+		while (randomMode) {
 			// for as many times as there are songs in the database
 			for (int i = 0; i <= list.size(); i++) {
 
@@ -86,12 +88,13 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 				playSongsFromQueue(playListStarter);
 				// wait for the end of the song before replaying the for loop
 				// and doing the next one
-				try {
-					Thread.sleep(playQueue.get(playListStarter).getLength());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-
-				}
+//				try {
+//					Thread.sleep(playQueue.get(playListStarter).getLength());
+//	
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//
+//				}
 				playListStarter++;
 			}
 
@@ -104,15 +107,9 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 	 * repeating shuffle playlist
 	 */
 	public void stopShufflePlayList() {
-		stopRandomMode = false;
+		randomMode = false;
 	}
 
-	public boolean isStopRandomMode() {
-		return stopRandomMode;
-	}
 
-	public void setStopRandomMode(boolean stopRandomMode) {
-		this.stopRandomMode = stopRandomMode;
-	}
 
 }

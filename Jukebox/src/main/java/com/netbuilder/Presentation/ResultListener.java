@@ -8,14 +8,16 @@ import javax.swing.JOptionPane;
 import com.netbuilder.DataAccess.MoneyController;
 import com.netbuilder.DataAccess.MusicController;
 import com.netbuilder.Service.PlayQueueArray;
+import com.netbuilder.Service.RandomPlayQueueArray;
 
 public class ResultListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+
 		double moneyValidation = MoneyController.countMoney();
-		if(moneyValidation>25){
+		if(moneyValidation>=25){
 		ClientView.clientControl.dispose();
 		System.out.println("Result button has been pressed\n");
 		PlayQueueArray pqa = new PlayQueueArray();

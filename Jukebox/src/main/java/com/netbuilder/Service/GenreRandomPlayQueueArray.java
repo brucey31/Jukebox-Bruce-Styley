@@ -22,6 +22,8 @@ public class GenreRandomPlayQueueArray extends RandomPlayQueueArray {
 
 
 	public List<Music> SetOfGenreShufflePlaylist(String genreSelection) {
+		randomMode = true;
+		System.out.println("Random Mode is " + randomMode);
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -49,7 +51,7 @@ public class GenreRandomPlayQueueArray extends RandomPlayQueueArray {
 		// length of the Music Catalog going until it is stopped by the boolean
 		// at the top
 
-		while (stopRandomMode) {
+		while (randomMode) {
 			// for as many times as there are songs in the database
 			for (int i = 0; i <= list.size(); i++) {
 
@@ -76,12 +78,12 @@ public class GenreRandomPlayQueueArray extends RandomPlayQueueArray {
 				playSongsFromQueue(playListStarter);
 				// wait for the end of the song before replaying the for loop
 				// and doing the next one
-				try {
-					Thread.sleep(playQueue.get(playListStarter).getLength());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-
-				}
+//				try {
+//					Thread.sleep(playQueue.get(playListStarter).getLength());
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//
+//				}
 				playListStarter++;
 			}
 

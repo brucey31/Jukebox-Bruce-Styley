@@ -1,21 +1,15 @@
 package com.netbuilder.Service;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.util.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
-
 import com.netbuilder.DataAccess.JukeBox;
-import com.netbuilder.DataAccess.MoneyController;
 import com.netbuilder.DataAccess.Music;
+
 
 /**
  * This Class contains the methods to deal with adding, moving and moving
@@ -30,6 +24,10 @@ public class PlayQueueArray {
 	// This ArrayList is protected so that it can be used in subsequent
 	// children... Go PolyMorphism!!
 	protected List<Music> playQueue = new ArrayList<Music>();
+
+	public static String soundFile;
+	
+	static Thread t = new Thread(new PlaySongsFromQueue());
 
 	/**
 	 * This Method will add an int to the playQueue array that will refer to a
@@ -60,7 +58,7 @@ public class PlayQueueArray {
 			playQueue.add(music);
 		}
 		System.out.println("This is the play queue as it stands" + playQueue);
-		
+
 		return playQueue;
 	}
 
@@ -68,9 +66,6 @@ public class PlayQueueArray {
 	 * This method takes an int parameter and plays the song of the index of the
 	 * int parameter in the playQueue Array
 	 * 
-	 * @param trackCount
-	 */
-	/**
 	 * @param trackCount
 	 */
 	public void playSongsFromQueue(int trackCount) {
@@ -85,8 +80,7 @@ public class PlayQueueArray {
 		EntityManager em = emf.createEntityManager();
 		// the start of the conversation between java and database
 		em.getTransaction().begin();
-		
-		
+
 		// Below are tests to check the parameters being inputed to the SQL
 		// Query
 		// System.out.println(playQueue.get(trackCount).toString());
@@ -111,21 +105,27 @@ public class PlayQueueArray {
 			System.out
 					.println(URL.toString().replace("[", "").replace("]", ""));
 
-			try {
-				String soundFile = URL.toString().replace("[", "")
-						.replace("]", "");
-				InputStream in = new FileInputStream(soundFile);
-				AudioStream audioStream = new AudioStream(in);
-				AudioPlayer.player.start(audioStream);
+			this.soundFile = URL.toString().replace("[", "").replace("]", "");
 
-			} catch (FileNotFoundException e) {
-
-				e.printStackTrace();
-
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
+			RandomPlayQueueArray rpq = new RandomPlayQueueArray();
+			rpq.stopShufflePlayList();
+			
+			IVE GOT A NEW THREAD GOING TO DO PLAY SONGS BY QUEUE BUT I CANT DO ANYTHING WITH IT AFTERWARDS
+			t.start();
+			
+			// try {
+			// InputStream in = new FileInputStream(soundFile);
+			// AudioStream audioStream = new AudioStream(in);
+			// AudioPlayer.player.start(audioStream);
+			//
+			// } catch (FileNotFoundException e) {
+			//
+			// e.printStackTrace();
+			//
+			// } catch (IOException e) {
+			//
+			// e.printStackTrace();
+			// }
 		}
 	}
 
@@ -140,12 +140,12 @@ public class PlayQueueArray {
 
 			// wait for the end of the song before replaying the for loop and
 			// doing the next one
-//			try {
-//				Thread.sleep(playQueue.get(i).getLength());
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//
-//			}
+			// try {
+			// Thread.sleep(playQueue.get(i).getLength());
+			// } catch (InterruptedException e) {
+			// e.printStackTrace();
+			//
+			// }
 
 		}
 

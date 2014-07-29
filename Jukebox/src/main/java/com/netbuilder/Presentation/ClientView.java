@@ -46,7 +46,7 @@ public class ClientView {
 		// this is the money balance part of the display, this label will
 		// display the total balance available
 		JLabel moneyBalance = new JLabel("Credit Available "
-				+ String.valueOf(MoneyController.countMoney()) + "Pence");
+				+ String.valueOf(MoneyController.countMoney()) + "P");
 		moneyBalance.setVisible(true);
 		moneyBalance.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		moneyBalance.setBackground(Color.BLACK);
@@ -78,23 +78,29 @@ public class ClientView {
 		money.add(coins);
 
 		// This is the playButton JButton
+		ActionListener playlistener = new PlayButtonListener();
 		ImageIcon PlayButton = new ImageIcon("Play Button.png");
 		JButton play = new JButton("", PlayButton);
 		play.setOpaque(false);
 		play.setVisible(true);
 		play.setBackground(Color.darkGray);
 		play.setPreferredSize(new Dimension(180, 180));
+		play.addActionListener(playlistener);
 
 		// This is the pauseButton JButton
+		ActionListener pauselistener = new PauseButtonListener();
 		ImageIcon PauseButton = new ImageIcon("Pause Button.png");
 		JButton pause = new JButton("", PauseButton);
 		pause.setOpaque(false);
 		pause.setPreferredSize(new Dimension(180, 180));
+		pause.addActionListener(pauselistener);
 
 		// This is the Skip Button JButton
+		ActionListener skiplistener = new SkipActionListener();
 		ImageIcon SkipButton = new ImageIcon("Skip Button.png");
 		JButton skip = new JButton("", SkipButton);
 		skip.setOpaque(false);
+		skip.addActionListener(skiplistener);
 
 		// this panel collects the control Buttons
 		JPanel ButtonControl = new JPanel();
