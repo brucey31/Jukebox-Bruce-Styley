@@ -55,7 +55,7 @@ public class JukeBox {
 
 		ClientView cw = new ClientView();
 		cw.SetupClient();
-	
+//	
 //		pq.playSongsFromQueue(0);
 		// MusicController.searchByAlbum("Number Ones [UK]");
 //		 MusicController.playByTitle("Beat It");
@@ -104,14 +104,14 @@ public class JukeBox {
 	public static List<Music> populateMusicCatalogue() {
 		List<Music> music = new ArrayList<Music>();
 		music.add(new Music("ThunderStruck",(long)292000, "ACDC", null,
-				"Back in Black", 1980,
+				"Back in Black","Rock", 1980,
 				"/Users/Brucee/Music/iTunes/iTunes Music/ACDC/Unknown Album/Thunderstruck.wav"));
 		music.add(new Music(
 				"Rat In Mi Kitchen",
 				(long)419000,
 				"UB40",
 				null,
-				"Houses",
+				"Houses","Reggae",
 				1976,
 				"/Users/Brucee/Music/Brucee's ITunes/iTunes Media/Music/UB40/Unknown Album/Rat In Mi Kitchen.wav"));
 		music.add(new Music(
@@ -119,7 +119,7 @@ public class JukeBox {
 				(long)310000,
 				"Winston Churchill",
 				null,
-				"Churchill Motivational Speeches",
+				"Churchill Motivational Speeches","Speeches",
 				1943,
 				"/Users/Brucee/Music/iTunes/iTunes Music/Winston Churchill/Churchill Motivational Speeches/Blood, Toil, Tears & Sweat.wav"));
 		music.add(new Music(
@@ -127,14 +127,14 @@ public class JukeBox {
 				(long)258000,
 				"Michael Jackson",
 				null,
-				"Number Ones (UK)",
+				"Number Ones (UK)","Pop",
 				1986,
 				"/Users/Brucee/Music/iTunes/iTunes Music/Michael Jackson/Number Ones (UK)/Beat It.wav"));
 		music.add(new Music(
 				"Confessions (unreleased)",
 				(long)261000,
 				"City and Colour",
-				"Dallas Green",
+				"Dallas Green","Acoustic",
 				"Live",
 				2010,
 				"/Users/Brucee/Music/iTunes/iTunes Music/City and Colour/Live/06 Confessions (unreleased).wav"));
@@ -143,7 +143,7 @@ public class JukeBox {
 				(long)217000,
 				"Beach Boys",
 				null,
-				"Best Beach Boys Album",
+				"Best Beach Boys Album","Pop",
 				1956,
 				"/Users/Brucee/Music/iTunes/iTunes Music/Beach Boys/Best Beach Boys Album/Good Vibrations.wav"));
 

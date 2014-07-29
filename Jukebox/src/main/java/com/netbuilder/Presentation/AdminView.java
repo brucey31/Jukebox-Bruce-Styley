@@ -26,6 +26,9 @@ public class AdminView {
 		randomPlaylist.setPreferredSize(new Dimension(300,50));
 		randomPlaylist.addActionListener(random);
 		
+		JButton rockPlaylist = new JButton("Random PlayList Of Rock");
+		rockPlaylist.setVisible(true);
+		rockPlaylist.setPreferredSize(new Dimension(300,50));
 		
 		JButton speechesPlaylist = new JButton("Random PlayList Of Speeches");
 		speechesPlaylist.setVisible(true);

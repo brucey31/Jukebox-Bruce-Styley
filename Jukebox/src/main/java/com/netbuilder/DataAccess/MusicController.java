@@ -16,7 +16,7 @@ import sun.audio.AudioStream;
 /**
  * @author Bruce Pannaman
  * @version 1.0
- *
+ * 
  */
 public class MusicController {
 
@@ -27,9 +27,9 @@ public class MusicController {
 		this.em = em;
 	}
 
-	// this method will get the array list from our main method and persist it
-	// to the database then commit it
 	/**
+	 * this method will get the array list from our main method and persist it
+	 * to the database then commit i
 	 * @param list
 	 */
 	public void persistMusicCatalogue(List<Music> list) {
@@ -47,7 +47,7 @@ public class MusicController {
 	/**
 	 * @param searchCriteria
 	 */
-	public static  List<Music> searchByArtist(String searchCriteria) {
+	public static List<Music> searchByArtist(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -97,9 +97,9 @@ public class MusicController {
 		for (Music music : list) {
 			System.out.println("\nWe Found Match(s)\n");
 			System.out.println(music.toString());
-			
+
 		}
-		
+
 		return (List<Music>) list;
 	}
 
@@ -107,7 +107,7 @@ public class MusicController {
 	/**
 	 * @param searchCriteria
 	 */
-	public static  List<Music> searchByTitle(String searchCriteria) {
+	public static List<Music> searchByTitle(String searchCriteria) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -128,13 +128,13 @@ public class MusicController {
 		for (Music music : list) {
 			System.out.println("\nWe Found Match(s)\n");
 			System.out.println(music.toString());
-			
+
 		}
 
 		if (Music.class.toString().equals(null)) {
 			System.out.println("I'm Sorry I found no such songs");
 		}
-		
+
 		return list;
 
 	}
@@ -145,7 +145,7 @@ public class MusicController {
 	 * @SuppressWarnings("restriction")
 	 * @exception (IO Exception) based on local computer file path
 	 */
-	
+
 	public static void playByTitle(String Title) {
 
 		System.out.println("Creating Entity Manager");

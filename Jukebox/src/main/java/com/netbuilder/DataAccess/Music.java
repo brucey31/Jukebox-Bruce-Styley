@@ -35,7 +35,6 @@ public class Music {
 
 	@Column(name = "Length")
 	@NotNull
-	
 	private long length;
 
 	@Column(name = "Artist")
@@ -51,6 +50,12 @@ public class Music {
 	@NotNull
 	@Size(min = 1, max = 45)
 	private String album;
+	
+	@Column(name = "Genre")
+	@NotNull
+	@Size(min = 1, max = 45)
+	private String genre;
+	
 
 	@Column(name = "Year")
 	private int year;
@@ -68,25 +73,27 @@ public class Music {
 	public Music() {
 	}
 
-	// This method makes a copy of the class to be overwritten when its called
+	
 	/**
-	 * This method makes a copy of the class to be overwritten when its called
+	 *  This method makes a copy of the class to be overwritten when its called
 	 * @param title
 	 * @param length
 	 * @param artist
 	 * @param additional_Artist
 	 * @param album
+	 * @param genres
 	 * @param year
 	 * @param file_Path
 	 */
 	public Music(String title, Long length, String artist,
-			String additional_Artist, String album, int year, String file_Path) {
+			String additional_Artist, String album, String genre, int year, String file_Path) {
 
 		this.title = title;
 		this.length = length;
 		this.artist = artist;
 		this.additional_Artist = additional_Artist;
 		this.album = album;
+		this.genre = genre;
 		this.year = year;
 		this.file_Path = file_Path;
 	}
@@ -104,6 +111,7 @@ public class Music {
 		sb.append("Artist: " + artist + "\n");
 		sb.append("Additional Artist: " + additional_Artist + "\n");
 		sb.append("Album: " + album + "\n");
+		sb.append("Genre" + genre + "\n");
 		sb.append("Year Released: " + year + "\n");
 		sb.append("File Path on Bruce's Laptop: " + file_Path + "\n");
 
@@ -158,6 +166,16 @@ public class Music {
 	public void setAlbum(String album) {
 		this.album = album;
 	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
 
 	public int getYear() {
 		return year;
