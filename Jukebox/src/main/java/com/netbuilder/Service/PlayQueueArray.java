@@ -34,7 +34,7 @@ public class PlayQueueArray {
 	/**
 	 * This instantiates a new Thread Called "one" which plays plays the playqueue
 	 */
-	public static Thread one = new Thread(new PlaySongsFromQueue());
+	public static Thread musicThread = new Thread(new PlaySongsFromQueue());
 
 	/**
 	 * This Method will add an int to the playQueue array that will refer to a
@@ -150,8 +150,8 @@ public class PlayQueueArray {
 		}
 
 		// this will one make a new thread if there isnt one already
-		if (!one.isAlive()) {
-			one.start();
+		if (!musicThread.isAlive()) {
+			musicThread.start();
 		}
 
 		// while (!one.isAlive()) {

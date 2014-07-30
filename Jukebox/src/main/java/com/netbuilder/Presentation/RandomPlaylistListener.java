@@ -13,8 +13,8 @@ public class RandomPlaylistListener implements ActionListener{
 		
 		RandomPlayQueueArray rpqa = new RandomPlayQueueArray();
 		rpqa.SetOffShufflePlaylist();
-		if (!rpqa.one.isAlive()){
-			rpqa.one.start();}
+		if (!rpqa.musicThread.isAlive()){
+			rpqa.musicThread.start();}
 		
 	}
 
