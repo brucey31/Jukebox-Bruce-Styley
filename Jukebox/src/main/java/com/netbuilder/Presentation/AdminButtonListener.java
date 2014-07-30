@@ -43,8 +43,8 @@ final String setPassword = "admin";
 			JOptionPane
 			.showConfirmDialog(
 					null,
-					"Uh, Uh Uhhh",
-					"Password Incorrect", JOptionPane.PLAIN_MESSAGE);
+					"Uh, Uh Uhhh\nPassword Incorrect",
+					"", JOptionPane.PLAIN_MESSAGE);
 			
 		}
 		
