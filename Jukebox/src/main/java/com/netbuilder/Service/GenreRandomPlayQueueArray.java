@@ -20,9 +20,15 @@ import com.netbuilder.DataAccess.Music;
  */
 public class GenreRandomPlayQueueArray extends RandomPlayQueueArray {
 
+	/**
+	 * This Method sets up a random shuffle playlist by genre (That is inputed
+	 * to it) and prepares them to be played using preparePlayQueueToBePlayed
+	 * 
+	 * @param genreSelection
+	 * @return
+	 */
 	public List<Music> SetOfGenreShufflePlaylist(String genreSelection) {
-		randomMode = true;
-		System.out.println("Random Mode is " + randomMode);
+
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which

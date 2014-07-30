@@ -16,13 +16,13 @@ class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 	public void run() {
 		for (int i = 0; i < playQueue.size(); i++) {
 
-			for (String string : URL) {
+			for (String s : URL) {
 
 				System.out.println("This is the URL without the brackets\n"
-						+ URL.get(i).toString().replace("[", "")
+						+ s.toString().replace("[", "")
 								.replace("]", ""));
 
-				soundFile = URL.get(i).toString().replace("[", "")
+				soundFile = s.toString().replace("[", "")
 						.replace("]", "");
 
 				try {
@@ -55,7 +55,7 @@ class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 
 	public void stop() {
 		System.out.println("User is trying to stop the thread");
-		Thread.currentThread().interrupt();
+		Thread.currentThread().destroy();
 	}
 
 }

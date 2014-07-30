@@ -20,14 +20,20 @@ import com.netbuilder.DataAccess.Music;
  */
 public class PlayQueueArray {
 
-	// This ArrayList is protected so that it can be used in subsequent
-	// children... Go PolyMorphism!!
+	/**
+	 * This ArrayList is protected so that it can be used in subsequent
+	 * children... Go PolyMorphism!!
+	 */
 	protected static List<Music> playQueue = new ArrayList<Music>();
-	// this list is used in the separate thread to play songs
+
+	/**
+	 * this list is used in the separate thread to play songs
+	 */
 	protected static List<String> URL = new ArrayList<String>();;
 
-	// public static String soundFile;
-
+	/**
+	 * This instantiates a new Thread Called "one" which plays plays the playqueue
+	 */
 	public static Thread one = new Thread(new PlaySongsFromQueue());
 
 	/**
@@ -65,9 +71,10 @@ public class PlayQueueArray {
 	}
 
 	/**
-	 * This method takes the trackcount of where playPlayQueue in in its
-	 * loop and adds the URL of each element of the playqueue and writes it to
+	 * This method takes the trackcount of where playPlayQueue in in its loop
+	 * and adds the URL of each element of the playqueue and writes it to
 	 * another list called URL that is called in the separate thread
+	 * 
 	 * @param trackCount
 	 */
 	public void preparePlayQueueToBePlayed(int trackCount) {
@@ -92,21 +99,19 @@ public class PlayQueueArray {
 		// let you do what you want to, and
 		// you need to effectively tell the compiler that what you're doing
 		// really will be legal at execution time.
-	
-		 
-		 
-		 List<String> temp = em
+
+		List<String> temp = em
 				.createQuery(
 						"select c.file_Path from Music c where Title LIKE:p")
-				.setParameter("p", playQueue.get(trackCount).getTitle()).setMaxResults(6)
-				.getResultList();
-		 System.out.println("This is the temp list" + temp);
-		 
-		 for(int i = 0; i<temp.size();i++){
-		 URL.add(temp.get(i).toString());
-		 System.out.println("This is the URL List\n" + URL);
-		 }
-		 
+				.setParameter("p", playQueue.get(trackCount).getTitle())
+				.setMaxResults(6).getResultList();
+		System.out.println("This is the temp list" + temp);
+
+		for (int i = 0; i < temp.size(); i++) {
+			URL.add(temp.get(i).toString());
+			System.out.println("This is the URL List\n" + URL);
+		}
+
 		//
 		// for (String string : URL) {
 		//
@@ -116,8 +121,7 @@ public class PlayQueueArray {
 		// soundFile = URL.toString().replace("[", "")
 		// .replace("]", "");
 
-		RandomPlayQueueArray rpq = new RandomPlayQueueArray();
-		rpq.stopShufflePlayList();
+
 
 		// try {
 		// InputStream in = new FileInputStream(soundFile);
@@ -134,12 +138,9 @@ public class PlayQueueArray {
 		// }
 	}
 
-	// this will one make a new thread if there isnt one already
-	// if(!one.isAlive())
-	// one.start();
-
 	/**
-	 * This method calls the takes every element in the playqueue and runs it through
+	 * This method calls the takes every element in the playqueue and runs it
+	 * through
 	 */
 	public void playPLayQueue() {
 
@@ -149,8 +150,9 @@ public class PlayQueueArray {
 		}
 
 		// this will one make a new thread if there isnt one already
-		if (!one.isAlive()){
-			one.start();}
+		if (!one.isAlive()) {
+			one.start();
+		}
 
 		// while (!one.isAlive()) {
 

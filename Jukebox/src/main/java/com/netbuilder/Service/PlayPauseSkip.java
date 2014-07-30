@@ -6,6 +6,10 @@ public class PlayPauseSkip extends PlayQueueArray {
 
 	PlaySongsFromQueue psfq = new PlaySongsFromQueue();
 
+	/**
+	 * This method pauses the music
+	 * This method is not a requirement and may not be used
+	 */
 	public void pauseSong() {
 		System.out.println("User is trying to pause the song");
 		psfq.stop();
@@ -19,5 +23,9 @@ public class PlayPauseSkip extends PlayQueueArray {
 	public void playSong() {
 		System.out.println("User is trying to set off the playlist");
 		playPLayQueue();
+	}
+	
+	public void skipSong(){
+		
 	}
 }
