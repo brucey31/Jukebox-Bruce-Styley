@@ -9,11 +9,12 @@ public class PopListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	System.out.println("Pop Playlist Button has been pressed!");
-	GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
-	grpqr.SetOfGenreShufflePlaylist("Pop");
-	if (!grpqr.musicThread.isAlive()){
-		grpqr.musicThread.start();}
-	}
+		System.out.println("Pop Playlist Button has been pressed!");
+		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
+		grpqr.SetOfGenreShufflePlaylist("Pop");
+		if (!grpqr.shuffleThread.isAlive()) {
+			grpqr.shuffleThread.start();
+		}
 
+	}
 }

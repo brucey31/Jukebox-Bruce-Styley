@@ -12,9 +12,8 @@ public class RockListener implements ActionListener {
 		System.out.println("Rock Playlist Button has been pressed!");
 		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
 		grpqr.SetOfGenreShufflePlaylist("Rock");
-		if (!grpqr.musicThread.isAlive()){
-			grpqr.musicThread.start();}
-		
+		if (!grpqr.shuffleThread.isAlive()) {
+			grpqr.shuffleThread.start();
+		}
 	}
-
 }

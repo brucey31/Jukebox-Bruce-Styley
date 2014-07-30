@@ -24,17 +24,25 @@ public class PlayQueueArray {
 	 * This ArrayList is protected so that it can be used in subsequent
 	 * children... Go PolyMorphism!!
 	 */
-	protected static List<Music> playQueue = new ArrayList<Music>();
+	protected volatile static List<Music> playQueue = new ArrayList<Music>();
 
 	/**
 	 * this list is used in the separate thread to play songs
 	 */
-	protected static List<String> URL = new ArrayList<String>();;
+	protected volatile static List<String> URL = new ArrayList<String>();;
 
 	/**
-	 * This instantiates a new Thread Called "one" which plays plays the playqueue
+	 * This instantiates a new Thread Called "musicThread" which plays plays the
+	 * play queue that has been selected by the user
 	 */
 	public static Thread musicThread = new Thread(new PlaySongsFromQueue());
+
+	/**
+	 * This instantiates a new Thread Called "shuffleThread" which plays plays
+	 * the play queue that has been selected by the shuffle function
+	 */
+	public static Thread shuffleThread = new Thread(
+			new PlayRandomSongsFromQueue());
 
 	/**
 	 * This Method will add an int to the playQueue array that will refer to a
@@ -111,31 +119,6 @@ public class PlayQueueArray {
 			URL.add(temp.get(i).toString());
 			System.out.println("This is the URL List\n" + URL);
 		}
-
-		//
-		// for (String string : URL) {
-		//
-		// System.out
-		// .println(URL.toString().replace("[", "").replace("]", ""));
-		//
-		// soundFile = URL.toString().replace("[", "")
-		// .replace("]", "");
-
-
-
-		// try {
-		// InputStream in = new FileInputStream(soundFile);
-		// AudioStream audioStream = new AudioStream(in);
-		// AudioPlayer.player.start(audioStream);
-		//
-		// } catch (FileNotFoundException e) {
-		//
-		// e.printStackTrace();
-		//
-		// } catch (IOException e) {
-		//
-		// e.printStackTrace();
-		// }
 	}
 
 	/**
@@ -153,19 +136,27 @@ public class PlayQueueArray {
 		if (!musicThread.isAlive()) {
 			musicThread.start();
 		}
+	}
+	
+	public void playRandomPLayQueue() {
 
-		// while (!one.isAlive()) {
+		for (int i = 0; i < playQueue.size(); i++) {
 
-		// wait for the end of the song before replaying the for loop
-		// and
-		// doing the next one
-		// try {
-		// Thread.sleep(playQueue.get(i).getLength());
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		//
-		// }
+			preparePlayQueueToBePlayed(i);
+		}
 
+		// this will one make a new thread if there isnt one already
+		if (!shuffleThread.isAlive()) {
+			shuffleThread.start();
+		}
+	}
+
+	public static List<Music> getPlayQueue() {
+		return playQueue;
+	}
+
+	public static void setPlayQueue(List<Music> playQueue) {
+		PlayQueueArray.playQueue = playQueue;
 	}
 
 }

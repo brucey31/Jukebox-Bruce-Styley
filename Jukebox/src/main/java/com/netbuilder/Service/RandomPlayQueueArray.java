@@ -98,10 +98,7 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 
 	}
 
-	/**
-	 * This method should be called when the user want to put a stop to the ever
-	 * repeating shuffle playlist
-	 */
+
 
 
 }

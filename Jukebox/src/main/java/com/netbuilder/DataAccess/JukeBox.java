@@ -56,6 +56,9 @@ public class JukeBox {
 
 		ClientView cw = new ClientView();
 		cw.SetupClient();
+		
+		
+		
 	
 //		pq.playSongsFromQueue(0);
 // 		MusicController.searchByAlbum("Number Ones [UK]");

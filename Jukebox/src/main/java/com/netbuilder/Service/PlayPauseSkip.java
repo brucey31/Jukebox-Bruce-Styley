@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class PlayPauseSkip extends PlayQueueArray {
 
 	PlaySongsFromQueue psfq = new PlaySongsFromQueue();
+	PlayRandomSongsFromQueue prsfq = new PlayRandomSongsFromQueue();
 
 	/**
 	 * This method pauses the music of the JukeBox This method is not a
@@ -40,8 +41,19 @@ public class PlayPauseSkip extends PlayQueueArray {
 	 * JukeBox
 	 */
 	public void skipSong() {
-		System.out.println("User is trying to pause the song");
-		psfq.stop();
+		System.out.println("User is trying to skip the song");
+		if(musicThread.isAlive()){
+			psfq.stop();
+		}
+		
+		if(shuffleThread.isAlive()){
+			prsfq.stop();
+		}
+		
+		if(!shuffleThread.isAlive() && !musicThread.isAlive()){
+			System.out.println("The Skip Button was pressed and neither string was alive\n");
+		}
+		
 	
 			
 		}

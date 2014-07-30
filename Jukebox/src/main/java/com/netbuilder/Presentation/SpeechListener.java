@@ -12,8 +12,9 @@ public class SpeechListener implements ActionListener {
 		System.out.println("Speech Playlist Button has been pressed!");
 		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
 		grpqr.SetOfGenreShufflePlaylist("Speeches");
-		if (!grpqr.musicThread.isAlive()){
-			grpqr.musicThread.start();}
+		if (!grpqr.shuffleThread.isAlive()) {
+			grpqr.shuffleThread.start();
+		}
 	}
 
 }
