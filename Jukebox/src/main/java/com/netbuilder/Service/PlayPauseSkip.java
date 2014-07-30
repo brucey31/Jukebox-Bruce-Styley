@@ -1,16 +1,23 @@
 package com.netbuilder.Service;
 
-public class PlayPauseSkip {
-	
+import sun.audio.AudioPlayer;
+
+public class PlayPauseSkip extends PlayQueueArray {
+
 	PlaySongsFromQueue psfq = new PlaySongsFromQueue();
 
-	public void pauseSong(){
+	public void pauseSong() {
 		System.out.println("User is trying to pause the song");
-	psfq.t.suspend();
-}
-	
-	public void playSong(){
-		System.out.println("User is trying to resume the song");
-		psfq.t.resume();
+		psfq.stop();
+
+	}
+
+	/**
+	 * This Method will start off the playQueue and instantiate a new thread to
+	 * play the song independently of the program
+	 */
+	public void playSong() {
+		System.out.println("User is trying to set off the playlist");
+		playPLayQueue();
 	}
 }

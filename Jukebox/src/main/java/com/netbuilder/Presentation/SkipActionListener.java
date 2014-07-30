@@ -7,7 +7,7 @@ public class SkipActionListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("The User is trying to skip the song");
 		
 	}
 

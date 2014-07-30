@@ -4,40 +4,58 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
 class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 
+	String soundFile;
+
 	@Override
 	public void run() {
-		try {
-			PlayQueueArray pqa = new PlayQueueArray();
+		for (int i = 0; i < playQueue.size(); i++) {
 
-			InputStream in = new FileInputStream(pqa.soundFile);
-			AudioStream audioStream = new AudioStream(in);
-			AudioPlayer.player.start(audioStream);
+			for (String string : URL) {
 
-			try {
-				for (int i = 0; i < playQueue.size(); i++) {
-					Thread.sleep(playQueue.get(i).getLength());
+				System.out.println("This is the URL without the brackets\n"
+						+ URL.get(i).toString().replace("[", "")
+								.replace("]", ""));
+
+				soundFile = URL.get(i).toString().replace("[", "")
+						.replace("]", "");
+
+				try {
+					System.out.println("This is what it thinks soundFile is\n"
+							+ soundFile);
+					InputStream in = new FileInputStream(soundFile);
+					AudioStream audioStream = new AudioStream(in);
+					AudioPlayer.player.start(audioStream);
+
+					// waits till the end of the song
+					try {
+						Thread.sleep(playQueue.get(i).getLength());
+					} catch (InterruptedException e1) {
+						System.out.println("Thread one was interupted");
+						e1.printStackTrace();
+					}
+
+				} catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+
+				} catch (IOException e) {
+
+					Thread.currentThread().interrupt();
 				}
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-
 			}
-
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
 		}
 
+	}
+
+	public void stop() {
+		System.out.println("User is trying to stop the thread");
+		Thread.currentThread().interrupt();
 	}
 
 }

@@ -10,7 +10,7 @@ public class PauseButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		PlayPauseSkip pps = new PlayPauseSkip();
-		pps.playSong();
+		pps.pauseSong();
 		
 	}
 

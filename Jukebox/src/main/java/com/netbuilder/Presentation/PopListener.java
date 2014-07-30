@@ -12,7 +12,8 @@ public class PopListener implements ActionListener {
 	System.out.println("Pop Playlist Button has been pressed!");
 	GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
 	grpqr.SetOfGenreShufflePlaylist("Pop");
-		
+	if (!grpqr.one.isAlive()){
+		grpqr.one.start();}
 	}
 
 }

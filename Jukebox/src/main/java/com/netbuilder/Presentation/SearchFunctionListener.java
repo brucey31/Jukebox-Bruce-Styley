@@ -11,6 +11,7 @@ import com.netbuilder.Service.PlayQueueArray;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * This class will deal with all action listeners and subsequent business logic
@@ -62,8 +63,17 @@ public class SearchFunctionListener extends AbstractAction {
 			
 			
 		}
+		
+		if(titles.isEmpty() && artists.isEmpty() && albums.isEmpty() ){
+			JOptionPane.showMessageDialog(null,
+				    "I'm Sorry\nThere are no songs\nthat match your criteria",
+				    "No Results Found",
+				    JOptionPane.ERROR_MESSAGE);
+			System.out.println("User typed in a bad search");
+			ClientView.SetupClient();
+		}
 
-		// I have now searched for music by using the search bar
+		
 
 	}
 }

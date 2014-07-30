@@ -18,8 +18,9 @@ public class ResultListener implements ActionListener {
 
 		double moneyValidation = MoneyController.countMoney();
 		if(moneyValidation>=25){
+			
 		ClientView.clientControl.dispose();
-		System.out.println("Result button has been pressed\n");
+		System.out.println("Result button has been pressed\nUser has purchased a song");
 		PlayQueueArray pqa = new PlayQueueArray();
 
 		System.out.println(MusicController.searchByTitle(ClientView.search
@@ -34,7 +35,8 @@ public class ResultListener implements ActionListener {
 		else if(!SearchFunctionListener.albums.isEmpty()){
 		pqa.addMultipleToQueue(SearchFunctionListener.albums);}
 	
-		pqa.playEntirePlaylist();
+		
+//		pqa.playEntirePlaylist();
 		ClientView.SetupClient();}
 		else{
 			JOptionPane.showMessageDialog(null,

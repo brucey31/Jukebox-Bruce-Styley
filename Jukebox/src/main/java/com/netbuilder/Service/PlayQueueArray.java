@@ -1,7 +1,7 @@
 package com.netbuilder.Service;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 
 import com.netbuilder.DataAccess.JukeBox;
 import com.netbuilder.DataAccess.Music;
-
 
 /**
  * This Class contains the methods to deal with adding, moving and moving
@@ -23,11 +22,13 @@ public class PlayQueueArray {
 
 	// This ArrayList is protected so that it can be used in subsequent
 	// children... Go PolyMorphism!!
-	protected List<Music> playQueue = new ArrayList<Music>();
+	protected static List<Music> playQueue = new ArrayList<Music>();
+	// this list is used in the separate thread to play songs
+	protected static List<String> URL = new ArrayList<String>();;
 
-	public static String soundFile;
-	
-	static Thread t = new Thread(new PlaySongsFromQueue());
+	// public static String soundFile;
+
+	public static Thread one = new Thread(new PlaySongsFromQueue());
 
 	/**
 	 * This Method will add an int to the playQueue array that will refer to a
@@ -57,18 +58,19 @@ public class PlayQueueArray {
 		for (Music music : songs) {
 			playQueue.add(music);
 		}
-		System.out.println("This is the play queue as it stands" + playQueue);
+		System.out.println("This is the play queue as it stands\n\n"
+				+ playQueue);
 
 		return playQueue;
 	}
 
 	/**
-	 * This method takes an int parameter and plays the song of the index of the
-	 * int parameter in the playQueue Array
-	 * 
+	 * This method takes the trackcount of where playPlayQueue in in its
+	 * loop and adds the URL of each element of the playqueue and writes it to
+	 * another list called URL that is called in the separate thread
 	 * @param trackCount
 	 */
-	public void playSongsFromQueue(int trackCount) {
+	public void preparePlayQueueToBePlayed(int trackCount) {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which
@@ -86,68 +88,82 @@ public class PlayQueueArray {
 		// System.out.println(playQueue.get(trackCount).toString());
 		// System.out.println(playQueue.get(trackCount).getTitle());
 
-		// I need to set the parameter for the below to a String that is the
-		// same as a title of the song to be player
-
 		// @SuppressWarnings("Unchecked")-Sometimes Java generics just doesn't
 		// let you do what you want to, and
 		// you need to effectively tell the compiler that what you're doing
 		// really will be legal at execution time.
-		@SuppressWarnings("unchecked")
-		List<String> URL = em
+	
+		 
+		 
+		 List<String> temp = em
 				.createQuery(
 						"select c.file_Path from Music c where Title LIKE:p")
-				.setParameter("p", playQueue.get(trackCount).getTitle())
-				.setMaxResults(6).getResultList();
+				.setParameter("p", playQueue.get(trackCount).getTitle()).setMaxResults(6)
+				.getResultList();
+		 System.out.println("This is the temp list" + temp);
+		 
+		 for(int i = 0; i<temp.size();i++){
+		 URL.add(temp.get(i).toString());
+		 System.out.println("This is the URL List\n" + URL);
+		 }
+		 
+		//
+		// for (String string : URL) {
+		//
+		// System.out
+		// .println(URL.toString().replace("[", "").replace("]", ""));
+		//
+		// soundFile = URL.toString().replace("[", "")
+		// .replace("]", "");
 
-		for (String string : URL) {
+		RandomPlayQueueArray rpq = new RandomPlayQueueArray();
+		rpq.stopShufflePlayList();
 
-			System.out
-					.println(URL.toString().replace("[", "").replace("]", ""));
-
-			this.soundFile = URL.toString().replace("[", "").replace("]", "");
-
-			RandomPlayQueueArray rpq = new RandomPlayQueueArray();
-			rpq.stopShufflePlayList();
-			
-			IVE GOT A NEW THREAD GOING TO DO PLAY SONGS BY QUEUE BUT I CANT DO ANYTHING WITH IT AFTERWARDS
-			t.start();
-			
-			// try {
-			// InputStream in = new FileInputStream(soundFile);
-			// AudioStream audioStream = new AudioStream(in);
-			// AudioPlayer.player.start(audioStream);
-			//
-			// } catch (FileNotFoundException e) {
-			//
-			// e.printStackTrace();
-			//
-			// } catch (IOException e) {
-			//
-			// e.printStackTrace();
-			// }
-		}
+		// try {
+		// InputStream in = new FileInputStream(soundFile);
+		// AudioStream audioStream = new AudioStream(in);
+		// AudioPlayer.player.start(audioStream);
+		//
+		// } catch (FileNotFoundException e) {
+		//
+		// e.printStackTrace();
+		//
+		// } catch (IOException e) {
+		//
+		// e.printStackTrace();
+		// }
 	}
+
+	// this will one make a new thread if there isnt one already
+	// if(!one.isAlive())
+	// one.start();
 
 	/**
-	 * This method will test how long the playQueue is and play each song in
-	 * turn waiting for the
+	 * This method calls the takes every element in the playqueue and runs it through
 	 */
-	public void playEntirePlaylist() {
+	public void playPLayQueue() {
 
 		for (int i = 0; i < playQueue.size(); i++) {
-			playSongsFromQueue(i);
 
-			// wait for the end of the song before replaying the for loop and
-			// doing the next one
-			// try {
-			// Thread.sleep(playQueue.get(i).getLength());
-			// } catch (InterruptedException e) {
-			// e.printStackTrace();
-			//
-			// }
-
+			preparePlayQueueToBePlayed(i);
 		}
 
+		// this will one make a new thread if there isnt one already
+		if (!one.isAlive()){
+			one.start();}
+
+		// while (!one.isAlive()) {
+
+		// wait for the end of the song before replaying the for loop
+		// and
+		// doing the next one
+		// try {
+		// Thread.sleep(playQueue.get(i).getLength());
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		//
+		// }
+
 	}
+
 }
