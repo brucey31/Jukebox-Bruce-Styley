@@ -49,7 +49,7 @@ public class ResultListener implements ActionListener {
 			// pqa.playEntirePlaylist();
 
 			// Refreshes clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 		} else {
 			JOptionPane.showMessageDialog(null,
 					"I'm Sorry\nThere isn't enough money\nto play this song",

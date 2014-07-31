@@ -41,7 +41,7 @@ public class JukeBox {
 		// This is the method for calling up the GUI which everything else runs
 		// off
 		ClientView cw = new ClientView();
-		cw.SetupClient();
+		cw.setupClient();
 
 	}
 

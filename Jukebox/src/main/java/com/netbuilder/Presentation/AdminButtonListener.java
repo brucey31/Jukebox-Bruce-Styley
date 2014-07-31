@@ -50,19 +50,28 @@ final String setPassword = "admin";
 				adminEntry,
 				"Entering a Restricted Admin Area\nEnter Password",
 				"");
-		//validation for password
-		if(password.equals((setPassword))){
-			AdminView.setupAdmin();
-		}
-		else{
-			System.out.println(password);
-			JOptionPane
-			.showConfirmDialog(
-					null,
-					"Uh, Uh Uhhh\nPassword Incorrect",
-					"", JOptionPane.PLAIN_MESSAGE);
-			
-		}
+		
+		// Validation for password
+				try {
+					if (password == null || (password != null && ("".equals(password)))) {
+						ClientView.setupClient();
+					}
+
+					if (password.equals((setPassword))) {
+						AdminView.setupAdmin();
+
+					}
+
+					if (!password.equals(setPassword)) {
+						System.out.println("Wrong Password attempt" + password);
+						JOptionPane.showConfirmDialog(null, "Uh, Uh Uhhh",
+								"Password Incorrect", JOptionPane.PLAIN_MESSAGE);
+						AdminView.setupAdmin();
+					}
+				} catch (NullPointerException err) {
+					System.out.println("Password validation has failed");
+					err.printStackTrace();
+				}
 		
 	}
 

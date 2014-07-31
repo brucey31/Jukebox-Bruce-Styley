@@ -31,11 +31,11 @@ public class GoBackListener implements ActionListener {
 	/**
 	 * This is the password that the admin types in
 	 */
-	static String password;
+	private static String password;
 	/**
 	 * This is the set admin password for the system
 	 */
-	final String setPassword = "admin";
+	private final String setPassword = "admin";
 	PlayRandomSongsFromQueue prsfq = new PlayRandomSongsFromQueue();
 
 	@Override
@@ -58,22 +58,34 @@ public class GoBackListener implements ActionListener {
 
 		password = JOptionPane.showInputDialog(adminEntry,
 				"Going back to Client View\nEnter Password", "");
-		
+
 		// Validation for password
-		if (password.equals((setPassword))) {
-			// prsfq.stop();
-			
-			// Ran out of time to sort playQueue problem out so the whole system
-			// resets when you exit the admin mode to completely clear playQueue
-			System.exit(0);
-			ClientView.SetupClient();
+		try {
+			if (password == null || (password != null && ("".equals(password)))) {
+				AdminView.setupAdmin();
+			}
 
-		} else {
-			System.out.println(password);
-			JOptionPane.showConfirmDialog(null, "Uh, Uh Uhhh",
-					"Password Incorrect", JOptionPane.PLAIN_MESSAGE);
-			AdminView.setupAdmin();
+			if (password.equals((setPassword))) {
+				// prsfq.stop();
 
+				// Ran out of time to sort playQueue problem out so the whole
+				// system
+				// resets when you exit the admin mode to completely clear
+				// playQueue
+				System.exit(0);
+				ClientView.setupClient();
+
+			}
+
+			if (!password.equals(setPassword)) {
+				System.out.println("Wrong Password attempt" + password);
+				JOptionPane.showConfirmDialog(null, "Uh, Uh Uhhh",
+						"Password Incorrect", JOptionPane.PLAIN_MESSAGE);
+				AdminView.setupAdmin();
+			}
+		} catch (NullPointerException err) {
+			System.out.println("Password validation has failed");
+			err.printStackTrace();
 		}
 
 	}

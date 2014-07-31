@@ -51,7 +51,7 @@ public class CoinButtonListener implements ActionListener {
 							"25 pence has been added to available balance",
 							"Money Added", JOptionPane.PLAIN_MESSAGE);
 			//Refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 		}
 
 		else if (result > 0 && result < 2) {
@@ -64,7 +64,7 @@ public class CoinButtonListener implements ActionListener {
 					"50 pence has been added to available balance",
 					"Money Added", JOptionPane.PLAIN_MESSAGE);
 			//Refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 		}
 
 		else if (result > 1) {
@@ -77,7 +77,7 @@ public class CoinButtonListener implements ActionListener {
 					"£1 has been added to available balance",
 					"Money Added", JOptionPane.PLAIN_MESSAGE);
 			//Refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 		}
 
 	}

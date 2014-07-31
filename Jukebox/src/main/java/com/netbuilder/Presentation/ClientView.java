@@ -54,7 +54,7 @@ public class ClientView extends JPanel {
 	 * This method calls up the initial clientView screen
 	 * this is the main view that the client will see
 	 */
-	public static void SetupClient() {
+	public static void setupClient() {
 
 		// this is the money balance part of the display, this label will
 		// display the total balance available

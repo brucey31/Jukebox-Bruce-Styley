@@ -121,6 +121,7 @@ public class PlayQueueArray {
 			URL.add(temp.get(i).toString());
 			System.out.println("This is the URL List\n" + URL);
 		}
+		
 	}
 
 	/**

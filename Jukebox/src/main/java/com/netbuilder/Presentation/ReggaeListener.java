@@ -19,7 +19,7 @@ public class ReggaeListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Reggae Playlist Button has been pressed!");
 		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
-		grpqr.SetOfGenreShufflePlaylist("Reggae");
+		grpqr.setOffGenreShufflePlaylist("Reggae");
 		if (!grpqr.shuffleThread.isAlive()) {
 			grpqr.shuffleThread.start();
 		}

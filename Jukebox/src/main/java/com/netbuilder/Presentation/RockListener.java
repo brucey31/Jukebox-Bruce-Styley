@@ -19,7 +19,7 @@ public class RockListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Rock Playlist Button has been pressed!");
-		grpqr.SetOfGenreShufflePlaylist("Rock");
+		grpqr.setOffGenreShufflePlaylist("Rock");
 		if (!grpqr.shuffleThread.isAlive()) {
 			grpqr.shuffleThread.start();
 		}

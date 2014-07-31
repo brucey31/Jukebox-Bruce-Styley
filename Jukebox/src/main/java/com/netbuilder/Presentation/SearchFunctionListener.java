@@ -57,7 +57,7 @@ public class SearchFunctionListener extends AbstractAction {
 			ClientView.resultString = titles.get(0).getTitle().toString();
 			System.out.println(ClientView.resultString);
 			// refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 
 		}
 		// if there is a result for artist
@@ -66,7 +66,7 @@ public class SearchFunctionListener extends AbstractAction {
 			ClientView.resultString = artists.get(0).getArtist().toString();
 			System.out.println(ClientView.resultString);
 			// refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 
 		}
 		// if there is a result for album
@@ -75,7 +75,7 @@ public class SearchFunctionListener extends AbstractAction {
 			ClientView.resultString = (albums.get(0).getAlbum().toString());
 			System.out.println(ClientView.resultString);
 			// refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 
 		}
 		// if there are no results
@@ -85,7 +85,7 @@ public class SearchFunctionListener extends AbstractAction {
 					"No Results Found", JOptionPane.ERROR_MESSAGE);
 			System.out.println("User typed in a bad search");
 			// refresh clientView
-			ClientView.SetupClient();
+			ClientView.setupClient();
 		}
 
 	}

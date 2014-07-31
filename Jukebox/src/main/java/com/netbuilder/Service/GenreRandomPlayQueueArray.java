@@ -31,7 +31,7 @@ public class GenreRandomPlayQueueArray extends RandomPlayQueueArray {
 	 * @param genreSelection
 	 * @return
 	 */
-	public List<Music> SetOfGenreShufflePlaylist(String genreSelection) {
+	public List<Music> setOffGenreShufflePlaylist(String genreSelection) {
 
 		System.out.println("Creating Entity Manager");
 
