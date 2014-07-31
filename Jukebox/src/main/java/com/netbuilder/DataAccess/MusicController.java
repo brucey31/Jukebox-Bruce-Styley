@@ -14,6 +14,9 @@ import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
 /**
+ * This class holds all the methods needed to deal with the music table in the
+ * database that is to do with the data access layer
+ * 
  * @author Bruce Pannaman
  * @version 1.0
  * 
@@ -29,7 +32,8 @@ public class MusicController {
 
 	/**
 	 * this method will get the array list from our main method and persist it
-	 * to the database then commit i
+	 * to the database then commit it
+	 * 
 	 * @param list
 	 */
 	public void persistMusicCatalogue(List<Music> list) {
@@ -43,8 +47,9 @@ public class MusicController {
 		System.out.println("Finished Persistence");
 	}
 
-	// this method will find a song by Artist in the database
+
 	/**
+	 * This method will find a song by Artist in the database and outputs the results to a list
 	 * @param searchCriteria
 	 */
 	public static List<Music> searchByArtist(String searchCriteria) {
@@ -72,8 +77,9 @@ public class MusicController {
 		return (List<Music>) list;
 	}
 
-	// this method will find a song by Album in the database
+	
 	/**
+	 * This method will find a song by Album in the database and outputs the results to a list
 	 * @param searchCriteria
 	 */
 	public static List<Music> searchByAlbum(String searchCriteria) {
@@ -103,8 +109,9 @@ public class MusicController {
 		return (List<Music>) list;
 	}
 
-	// this method will find a song by Song Title in the database
+
 	/**
+	 * This method will find a song by Song Title in the database and outputs the results to a list
 	 * @param searchCriteria
 	 */
 	public static List<Music> searchByTitle(String searchCriteria) {
@@ -139,8 +146,9 @@ public class MusicController {
 
 	}
 
-	// this method will play a song by title
+
 	/**
+	 * This method will play a song by giving it a title name
 	 * @param Title
 	 * @SuppressWarnings("restriction")
 	 * @exception (IO Exception) based on local computer file path

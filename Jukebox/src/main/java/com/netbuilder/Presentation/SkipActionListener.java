@@ -5,14 +5,20 @@ import java.awt.event.ActionListener;
 
 import com.netbuilder.Service.PlayPauseSkip;
 
-public class SkipActionListener implements ActionListener{
+/**
+ * This actionListener class is activated when the user presses the skip button.
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ */
+public class SkipActionListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("The User is trying to skip the song");
 		PlayPauseSkip pps = new PlayPauseSkip();
 		pps.skipSong();
-		
+
 	}
 
 }

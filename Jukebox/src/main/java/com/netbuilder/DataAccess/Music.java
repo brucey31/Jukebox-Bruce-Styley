@@ -13,11 +13,12 @@ import javax.validation.constraints.Size;
 //this is the java map of my Database
 /**
  * This class my POJO for the music table in the database
+ * 
  * @author Bruce Pannaman
  * @version 1.0
  * @Entity
  * @Table
- *
+ * 
  */
 @Entity
 @Table(name = "Music")
@@ -50,12 +51,11 @@ public class Music {
 	@NotNull
 	@Size(min = 1, max = 45)
 	private String album;
-	
+
 	@Column(name = "Genre")
 	@NotNull
 	@Size(min = 1, max = 45)
 	private String genre;
-	
 
 	@Column(name = "Year")
 	private int year;
@@ -63,19 +63,17 @@ public class Music {
 	@Column(name = "File_Path")
 	@NotNull
 	@Size(min = 1, max = 150)
-	private  String file_Path;
+	private String file_Path;
 
-	// This default constructor creates a blank copy of Products can be used by
-	// another class
 	/**
 	 * This is a blank constructor
 	 */
 	public Music() {
 	}
 
-	
 	/**
-	 *  This method makes a copy of the class to be overwritten when its called
+	 * This method makes a copy of the class to be overwritten when its called
+	 * 
 	 * @param title
 	 * @param length
 	 * @param artist
@@ -86,7 +84,8 @@ public class Music {
 	 * @param file_Path
 	 */
 	public Music(String title, Long length, String artist,
-			String additional_Artist, String album, String genre, int year, String file_Path) {
+			String additional_Artist, String album, String genre, int year,
+			String file_Path) {
 
 		this.title = title;
 		this.length = length;
@@ -100,8 +99,6 @@ public class Music {
 
 	// This creates a template for the "list what is persisted" method to print
 	// out what it has persisted
-	
-
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder();
@@ -119,6 +116,7 @@ public class Music {
 
 	}
 
+	// GETTERS AND SETTERS
 	public int getIdMusic() {
 		return idMusic;
 	}
@@ -171,11 +169,9 @@ public class Music {
 		return genre;
 	}
 
-
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-
 
 	public int getYear() {
 		return year;
@@ -192,7 +188,5 @@ public class Music {
 	public void setFile_Path(String file_Path) {
 		this.file_Path = file_Path;
 	}
-
-
 
 }

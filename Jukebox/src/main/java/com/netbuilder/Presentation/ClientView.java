@@ -33,18 +33,28 @@ import com.netbuilder.DataAccess.MoneyController;
 @SuppressWarnings("serial")
 public class ClientView extends JPanel {
 
-	// ATTRIBUTES FOR GUI
-	// This search field is used in SearchFunctionListener
-	static JTextField search = new JTextField("What do you want to Listen to",
-			JTextField.CENTER);
-	// This string changes what the result buttons say and is changes using
-	// SearchFunctionListener
+	/**
+	 * This search field is used in SearchFunctionListener
+	 */
+	static JTextField search = new RoundJTextField("What do you want to listen to",20);
+
+	/**
+	 * This string changes what the result buttons say and is changes using
+	 * SearchFunctionListener
+	 */
 	static String resultString;
-	// This is the JFrame that needs to be killed every page refresh
+
+	/**
+	 * This is the JFrame that needs to be killed every page refresh
+	 */
 	static JFrame clientControl;
 
 	/**
 	 * this is the main view that the client will see
+	 */
+
+	/**
+	 * This method calls up the initial clientView screen
 	 */
 	public static void SetupClient() {
 
@@ -137,8 +147,8 @@ public class ClientView extends JPanel {
 		MouseListener mouse = new MouseViewListener();
 		search.setVisible(true);
 		search.setEditable(true);
-		search.setBackground(Color.lightGray);
-		search.setForeground(Color.DARK_GRAY);
+		search.setBackground(Color.DARK_GRAY);
+		search.setForeground(Color.lightGray);
 		search.setFont(new Font("Comic-Sans", Font.PLAIN, 25));
 		search.setPreferredSize(new Dimension(400, 60));
 		search.addActionListener(searchInput);
@@ -165,7 +175,7 @@ public class ClientView extends JPanel {
 		firstResult.setOpaque(false);
 		firstResult.setContentAreaFilled(false);
 		firstResult.setBorderPainted(false);
-		firstResult.setFont(new Font("Comic-Sans", Font.BOLD,40));
+		firstResult.setFont(new Font("Comic-Sans", Font.BOLD, 40));
 		firstResult.setForeground(Color.WHITE);
 		firstResult.addActionListener(playResult);
 
@@ -179,7 +189,7 @@ public class ClientView extends JPanel {
 		secondResult.setOpaque(false);
 		secondResult.setContentAreaFilled(false);
 		secondResult.setBorderPainted(false);
-		secondResult.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		secondResult.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		secondResult.setForeground(Color.WHITE);
 		secondResult.setBackground(Color.darkGray);
 
@@ -193,29 +203,29 @@ public class ClientView extends JPanel {
 		thirdResult.setOpaque(false);
 		thirdResult.setContentAreaFilled(false);
 		thirdResult.setBorderPainted(false);
-		thirdResult.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		thirdResult.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		thirdResult.setForeground(Color.WHITE);
 		thirdResult.setBackground(Color.darkGray);
 
-//		 these are the buttons that will be called when the search result
-//		 is
-//		 found
+		// these are the buttons that will be called when the search result
+		// is
+		// found
 		JButton fourthResult = new JButton();
 		fourthResult.setSize(800, 50);
 		fourthResult.setVisible(false);
 		fourthResult.setBackground(Color.darkGray);
 
-//		 these are the buttons that will be called when the search result
-//		 is
-//		 found
+		// these are the buttons that will be called when the search result
+		// is
+		// found
 		JButton fifthResult = new JButton();
 		fifthResult.setBounds(0, 0, 800, 800);
 		fifthResult.setVisible(false);
 		fifthResult.setBackground(Color.darkGray);
 
-//		 these are the buttons that will be called when the search result
-//		 is
-//		 found
+		// these are the buttons that will be called when the search result
+		// is
+		// found
 		JButton sixthResult = new JButton();
 		sixthResult.setSize(800, 50);
 		sixthResult.setVisible(false);
@@ -229,21 +239,19 @@ public class ClientView extends JPanel {
 		resultPanel.add(firstResult);
 		resultPanel.add(secondResult);
 		resultPanel.add(thirdResult);
-		resultPanel.setPreferredSize(new Dimension(800,200));
+		resultPanel.setPreferredSize(new Dimension(800, 200));
 
 		// This is the main Label of the page that reads BRUCETUNES
 		ImageIcon backGroundImage = new ImageIcon("animatedmusicmeter.gif");
 		JLabel titleLabel = new JLabel(backGroundImage);
-		titleLabel.setPreferredSize(new Dimension(600,320));
-		
-		
+		titleLabel.setPreferredSize(new Dimension(600, 320));
 
 		// This Panel Holds the Title piece for the page
 		JPanel title = new JPanel();
 		FlowLayout fl1 = new FlowLayout();
 		title.setLayout(fl1);
 		title.setOpaque(false);
-		title.setPreferredSize(new Dimension(600,320));
+		title.setPreferredSize(new Dimension(600, 320));
 		title.add(titleLabel);
 
 		// This is the holder for all the Items on the GUI
@@ -259,7 +267,7 @@ public class ClientView extends JPanel {
 		holder.add(resultPanel);
 		holder.add(title);
 
-		//this JLabel contains the background image
+		// this JLabel contains the background image
 		JLabel ContentPane = new JLabel();
 		ImageIcon backImage = new ImageIcon("AbstractMusicBackground.jpg");
 		ContentPane.setIcon(backImage);

@@ -5,6 +5,14 @@ import java.awt.event.ActionListener;
 
 import com.netbuilder.Service.GenreRandomPlayQueueArray;
 
+/**
+ * This actionListener class is activated when the admin presses the pop
+ * atmosphere button and sets off a genre specific random playlist of pop songs
+ * and starts a new shuffle thread to play them
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ */
 public class PopListener implements ActionListener {
 
 	@Override

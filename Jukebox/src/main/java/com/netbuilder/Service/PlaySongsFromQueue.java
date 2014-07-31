@@ -10,13 +10,32 @@ import java.net.URI;
 
 import sun.audio.*;
 
+/**
+ * This class is my musicThread that is separate from my main program and plays
+ * the user specified playlist
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ * 
+ */
 public class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 
+	
+	/**
+	 * This is the FilePath string to be used
+	 */
 	String soundFile;
 	InputStream in;
+	/**
+	 * This Sun audioStream sets up the music
+	 */
 	AudioStream audioStream;
+	/**
+	 * This sun audioPlayer plays the music
+	 */
 	AudioPlayer player;
 
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
@@ -41,9 +60,9 @@ public class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 					try {
 						Thread.sleep(playQueue.get(i).getLength());
 						// this removes the song that was played from the URL
-						// and playQueue so that it doesn't loop the purchased songs
+						// and playQueue so that it doesn't loop the purchased
+						// songs
 						playQueue.remove(i);
-						
 
 					}
 
@@ -52,14 +71,14 @@ public class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 						// something it has to kill the wait till the song has
 						// finished and kill the player from before
 						System.out.println("Thread musicThread was interupted");
-						// this will stop the audio player playing the current song
+						// this will stop the audio player playing the current
+						// song
 						player.player.stop(audioStream);
 						// this removes the song that was played from the URL
-						// and playQueue so that it doesn't loop the purchased songs
+						// and playQueue so that it doesn't loop the purchased
+						// songs
 						playQueue.remove(i);
-					
-						
-						
+
 					}
 
 				} catch (FileNotFoundException e) {
@@ -84,7 +103,7 @@ public class PlaySongsFromQueue extends PlayQueueArray implements Runnable {
 		musicThread.interrupt();
 
 		// this will stop the audio player playing the current song
-//		this.player.player.stop(audioStream);
+		// this.player.player.stop(audioStream);
 
 	}
 }

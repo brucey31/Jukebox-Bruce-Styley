@@ -21,13 +21,15 @@ import com.netbuilder.DataAccess.Music;
 public class PlayQueueArray {
 
 	/**
-	 * This ArrayList is protected so that it can be used in subsequent
+	 * This ArrayList is used throughout the service layer and protected so that it can be used in subsequent
 	 * children... Go PolyMorphism!!
 	 */
 	protected volatile static List<Music> playQueue = new ArrayList<Music>();
 
 	/**
-	 * this list is used in the separate thread to play songs
+	 * This list contains the playQueue list but instead of music objects it
+	 * contains filePath strings and is used in the separate threads to play
+	 * songs
 	 */
 	protected volatile static List<String> URL = new ArrayList<String>();;
 
@@ -45,8 +47,8 @@ public class PlayQueueArray {
 			new PlayRandomSongsFromQueue());
 
 	/**
-	 * This Method will add an int to the playQueue array that will refer to a
-	 * musicID thus a song in the database
+	 * This method will add a singular song to the playQueue thus is not used
+	 * because we want to add multiple songs to the playQueue.
 	 * 
 	 * @param songAdded
 	 * @return
@@ -61,8 +63,7 @@ public class PlayQueueArray {
 	}
 
 	/**
-	 * 
-	 * This Method will add multiple songs to the playQueue arraylist
+	 * This Method will add multiple songs to the playQueue arrayList one by one
 	 * 
 	 * @param songs
 	 * @return
@@ -79,9 +80,10 @@ public class PlayQueueArray {
 	}
 
 	/**
-	 * This method takes the trackcount of where playPlayQueue in in its loop
-	 * and adds the URL of each element of the playqueue and writes it to
-	 * another list called URL that is called in the separate thread
+	 * This method prepares the playQueue to be played; The trackCount of where
+	 * playPlayQueue in its loop is taken. It then adds the URL of each element
+	 * of the playQueue and writes it to another list called URL that is called
+	 * in the separate thread
 	 * 
 	 * @param trackCount
 	 */
@@ -122,8 +124,9 @@ public class PlayQueueArray {
 	}
 
 	/**
-	 * This method calls the takes every element in the playqueue and runs it
-	 * through
+	 * This method calls every element in the playQueue and runs it through
+	 * preparePlayQueueToBePlayed then starts the playQueue playing in the
+	 * musicThread
 	 */
 	public void playPLayQueue() {
 
@@ -137,7 +140,12 @@ public class PlayQueueArray {
 			musicThread.start();
 		}
 	}
-	
+
+	/**
+	 * This method calls every element in the playQueue and runs it through
+	 * preparePlayQueueToBePlayed then starts the playQueue playing in the
+	 * shuffleThread
+	 */
 	public void playRandomPLayQueue() {
 
 		for (int i = 0; i < playQueue.size(); i++) {
@@ -150,6 +158,8 @@ public class PlayQueueArray {
 			shuffleThread.start();
 		}
 	}
+
+	// GETTERS AND SETTERS
 
 	public static List<Music> getPlayQueue() {
 		return playQueue;

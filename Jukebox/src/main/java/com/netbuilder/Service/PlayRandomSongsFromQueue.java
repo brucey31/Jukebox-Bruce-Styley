@@ -8,12 +8,29 @@ import java.io.InputStream;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
+/**
+ * This class is my shuffleThread that is separate from my main program and plays
+ * the shuffle mode specified playlist
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ * 
+ */
 public class PlayRandomSongsFromQueue extends PlayQueueArray implements
 		Runnable {
 
+	/**
+	 * This is the FilePath string to be used
+	 */
 	String soundFile;
 	InputStream in;
+	/**
+	 * This Sun audioStream sets up the music
+	 */
 	AudioStream audioStream;
+	/**
+	 * This sun audioPlayer plays the music
+	 */
 	AudioPlayer player;
 
 	@Override
@@ -49,7 +66,8 @@ public class PlayRandomSongsFromQueue extends PlayQueueArray implements
 						// when the Thread has been because of a skip button or
 						// something it has to kill the wait till the song has
 						// finished and kill the player from before
-						System.out.println("Thread shuffleThread was interupted");
+						System.out
+								.println("Thread shuffleThread was interupted");
 						// this will stop the audio player playing the current
 						// song
 						player.player.stop(audioStream);
@@ -79,15 +97,26 @@ public class PlayRandomSongsFromQueue extends PlayQueueArray implements
 	public void stop() {
 		System.out.println("admin is trying to stop the random thread");
 
-		// this will kill the whole shuffle playlist created by either shuffle function
-		while(!PlayQueueArray.getPlayQueue().isEmpty()){
+		// this will kill the whole shuffle playlist created by either shuffle
+		// function
+		while (!PlayQueueArray.getPlayQueue().isEmpty()) {
 			shuffleThread.interrupt();
 			shuffleThread.destroy();
-			
-			}
+
+		}
 		shuffleThread.interrupt();
 		shuffleThread.destroy();
 
+	}
+	
+	//GETTERS AND SETTERS
+
+	public AudioPlayer getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(AudioPlayer player) {
+		this.player = player;
 	}
 
 }

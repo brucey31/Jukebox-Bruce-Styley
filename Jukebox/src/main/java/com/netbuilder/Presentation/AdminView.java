@@ -13,12 +13,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * This class hold the GUI that is show when the admin has logged in and is
+ * setting an atmosphere or setting off a shuffle playlist
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ * 
+ */
 public class AdminView {
-	// ATTRIBUTES
-	// This is globalised so that the admin page can be killed when the go back
-	// button is hit
+	
+	/**
+	 * This is globalised so that the admin page can be killed when the go back
+	 * button is hit
+	 */
 	static JFrame adminControl;
 
+	/**
+	 * This method calls up the admin screen once the admin has logged in
+	 */
 	public static void setupAdmin() {
 
 		JLabel test = new JLabel("You have reached the Admin page",
@@ -32,7 +45,7 @@ public class AdminView {
 		JButton randomPlaylist = new JButton("Random PlayList Of All Songs");
 		randomPlaylist.setVisible(true);
 		randomPlaylist.setPreferredSize(new Dimension(300, 50));
-		randomPlaylist.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		randomPlaylist.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		randomPlaylist.setForeground(Color.WHITE);
 		randomPlaylist.addActionListener(random);
 		randomPlaylist.setOpaque(false);
@@ -44,7 +57,7 @@ public class AdminView {
 		rockPlaylist.setVisible(true);
 		rockPlaylist.setPreferredSize(new Dimension(300, 50));
 		rockPlaylist.addActionListener(rock);
-		rockPlaylist.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		rockPlaylist.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		rockPlaylist.setForeground(Color.WHITE);
 		rockPlaylist.setOpaque(false);
 		rockPlaylist.setBorderPainted(false);
@@ -55,19 +68,18 @@ public class AdminView {
 		speechesPlaylist.setVisible(true);
 		speechesPlaylist.setPreferredSize(new Dimension(300, 50));
 		speechesPlaylist.addActionListener(speeches);
-		speechesPlaylist.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		speechesPlaylist.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		speechesPlaylist.setForeground(Color.WHITE);
 		speechesPlaylist.setOpaque(false);
 		speechesPlaylist.setBorderPainted(false);
 		speechesPlaylist.setContentAreaFilled(false);
-		
 
 		ActionListener reggae = new ReggaeListener();
 		JButton reggaePlaylist = new JButton("Random PlayListOf Reggae");
 		reggaePlaylist.setVisible(true);
 		reggaePlaylist.setPreferredSize(new Dimension(300, 50));
 		reggaePlaylist.addActionListener(reggae);
-		reggaePlaylist.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		reggaePlaylist.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		reggaePlaylist.setForeground(Color.WHITE);
 		reggaePlaylist.setOpaque(false);
 		reggaePlaylist.setBorderPainted(false);
@@ -78,7 +90,7 @@ public class AdminView {
 		popPlaylist.setVisible(true);
 		popPlaylist.setPreferredSize(new Dimension(300, 50));
 		popPlaylist.addActionListener(pop);
-		popPlaylist.setFont(new Font("Comic-Sans", Font.BOLD,16));
+		popPlaylist.setFont(new Font("Comic-Sans", Font.BOLD, 16));
 		popPlaylist.setForeground(Color.WHITE);
 		popPlaylist.setOpaque(false);
 		popPlaylist.setBorderPainted(false);
@@ -89,7 +101,7 @@ public class AdminView {
 		GoBack.setVisible(true);
 		GoBack.setPreferredSize(new Dimension(300, 50));
 		GoBack.addActionListener(goBackButton);
-		GoBack.setFont(new Font("Comic-Sans", Font.BOLD,20));
+		GoBack.setFont(new Font("Comic-Sans", Font.BOLD, 20));
 		GoBack.setForeground(Color.WHITE);
 		GoBack.setOpaque(false);
 		GoBack.setBorderPainted(false);

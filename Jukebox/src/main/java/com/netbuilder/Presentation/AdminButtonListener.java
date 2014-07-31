@@ -10,11 +10,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+/**
+ * This actionListener class is called when the admin button is pressed and goes through a login page
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ *
+ */
 public class AdminButtonListener implements ActionListener {
+/**
+ * This is the password the admin has entered
+ */
 static String password;
+/**
+ * This is the set password for the admin account
+ */
 final String setPassword = "admin";
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Kills the clientView
 		ClientView.clientControl.dispose();
 		JFrame adminEntry = new JFrame();
 		adminEntry.setSize(200, 100);
@@ -29,12 +43,13 @@ final String setPassword = "admin";
 		passwordEntry.add(label);
 		passwordEntry.add(pass);
 		
+		//login JOptionPane
 		password= JOptionPane
 		.showInputDialog(
 				adminEntry,
 				"Entering a Restricted Admin Area\nEnter Password",
 				"");
-		
+		//validation for password
 		if(password.equals((setPassword))){
 			AdminView.setupAdmin();
 		}

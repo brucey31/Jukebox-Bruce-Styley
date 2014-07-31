@@ -9,6 +9,8 @@ import javax.persistence.Persistence;
 import com.netbuilder.DataAccess.Music;
 
 /**
+ * This class contains methods to deal with the playQueue in an admin context to set shuffle mode on and off
+ * 
  * This class is a child of PlayQueueArray because they can share the same list
  * playQueue and calls the same methods (playSongsFromQueue) that take different
  * inputs
@@ -22,8 +24,8 @@ import com.netbuilder.DataAccess.Music;
 public class RandomPlayQueueArray extends PlayQueueArray {
 
 	/**
-	 * This method gets all the songs from the database and makes a random
-	 * playlist out of them and adds them to playQueue. It then prepares each
+	 * This method gets all the songs from the database, makes a random
+	 * playlist out of all them then adds them to playQueue. It then prepares each
 	 * element of the playQueue to be played using preparePlayQueueToBePlayed method
 	 * 
 	 * @return
@@ -50,9 +52,6 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 		// variable
 		list.size();
 
-		// this while loop will keep the method picking random playlists of
-		// length of the Music Catalog going until it is stopped by the boolean
-		// at the top
 
 		// for as many times as there are songs in the database
 		for (int i = 0; i <= list.size(); i++) {
@@ -78,16 +77,6 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 			// this method isn't in this class but a parent class EXAMPLE OF
 			// POLYMORPHISM
 			preparePlayQueueToBePlayed(playListStarter);
-
-			// wait for the end of the song before replaying the for loop
-			// and doing the next one
-			// try {
-			// Thread.sleep(playQueue.get(playListStarter).getLength());
-			//
-			// } catch (InterruptedException e) {
-			// e.printStackTrace();
-			//
-			// }
 
 			playListStarter++;
 			System.out.println("Set off Shuffle PlayList has set up "

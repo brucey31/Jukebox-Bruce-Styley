@@ -8,38 +8,41 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 /**
- * This Method is a POJO for my Money table in the database that will keep track of how much money has been deposited in the machine
+ * This Method is a POJO for my Money table in the database that will keep track
+ * of how much money has been deposited in the machine
+ * 
  * @Entity
  * @Table
  * @author Bruce Pannaman
- *
+ * 
  */
 @Entity
-@Table(name="Money")
+@Table(name = "Money")
 public class Money {
-	
+
 	@Id
 	@Column(name = "idMoney")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idMoney;
 
-	@Column(name= "AmountAdded")
+	@Column(name = "AmountAdded")
 	@NotNull
 	private int AmountAdded;
-	
+
 	/**
 	 * This is a blank Constructor
 	 */
-	public Money(){
-		
+	public Money() {
+
 	}
-	
-	public Money(int AmountAdded){
-		this.AmountAdded= AmountAdded;
+
+	public Money(int AmountAdded) {
+		this.AmountAdded = AmountAdded;
 	}
+
 	
+	//GETTERS AND SETTERS
 	public int getIdMoney() {
 		return idMoney;
 	}

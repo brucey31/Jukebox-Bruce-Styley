@@ -5,6 +5,12 @@ import java.awt.event.ActionListener;
 
 import com.netbuilder.Service.PlayPauseSkip;
 
+/**
+ * This actionListener class activates when the user presses the pause button
+ * 
+ * @author Bruce Pannaman		
+ * @version 1.0
+ */
 public class PauseButtonListener implements ActionListener {
 
 	@Override

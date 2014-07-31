@@ -3,6 +3,13 @@ package com.netbuilder.Presentation;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * This actionListener class is called when the user clicks on the search bar and clears it
+ * 
+ * @author Bruce Pannaman
+ * @version 1.0
+ *
+ */
 public class MouseViewListener implements MouseListener {
 
 	@Override
