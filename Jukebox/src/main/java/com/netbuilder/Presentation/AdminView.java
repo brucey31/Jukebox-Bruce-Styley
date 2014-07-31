@@ -27,7 +27,7 @@ public class AdminView {
 	 * This is globalised so that the admin page can be killed when the go back
 	 * button is hit
 	 */
-	static JFrame adminControl;
+	private static JFrame adminControl;
 
 	/**
 	 * This method calls up the admin screen once the admin has logged in
@@ -116,6 +116,7 @@ public class AdminView {
 		holder.add(test);
 		holder.add(randomPlaylist);
 		holder.add(popPlaylist);
+		holder.add(rockPlaylist);
 		holder.add(reggaePlaylist);
 		holder.add(speechesPlaylist);
 		holder.add(GoBack);
@@ -135,4 +136,13 @@ public class AdminView {
 		adminControl.setResizable(false);
 
 	}
+
+	public static JFrame getAdminControl() {
+		return adminControl;
+	}
+
+	public static void setAdminControl(JFrame adminControl) {
+		AdminView.adminControl = adminControl;
+	}
+	
 }

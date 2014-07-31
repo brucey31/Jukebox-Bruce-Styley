@@ -14,11 +14,11 @@ import com.netbuilder.Service.GenreRandomPlayQueueArray;
  * @version 1.0
  */
 public class RockListener implements ActionListener {
+	GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Rock Playlist Button has been pressed!");
-		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
 		grpqr.SetOfGenreShufflePlaylist("Rock");
 		if (!grpqr.shuffleThread.isAlive()) {
 			grpqr.shuffleThread.start();

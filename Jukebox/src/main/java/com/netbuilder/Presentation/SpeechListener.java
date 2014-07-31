@@ -14,11 +14,12 @@ import com.netbuilder.Service.GenreRandomPlayQueueArray;
  * @version 1.0
  */
 public class SpeechListener implements ActionListener {
-
+	GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Speech Playlist Button has been pressed!");
-		GenreRandomPlayQueueArray grpqr = new GenreRandomPlayQueueArray();
+		
 		grpqr.SetOfGenreShufflePlaylist("Speeches");
 		if (!grpqr.shuffleThread.isAlive()) {
 			grpqr.shuffleThread.start();

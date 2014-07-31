@@ -37,9 +37,9 @@ public class SearchFunctionListener extends AbstractAction {
 	static List<Music> albums;
 
 	public void actionPerformed(ActionEvent evt) {
-		ClientView.clientControl.dispose();
+		ClientView.getClientControl().dispose();
 
-		String inputFromSearchBar = com.netbuilder.Presentation.ClientView.search
+		String inputFromSearchBar = com.netbuilder.Presentation.ClientView.getSearch()
 				.getText();
 
 		System.out.println(inputFromSearchBar + "was entered into searchbar");
@@ -48,6 +48,9 @@ public class SearchFunctionListener extends AbstractAction {
 		artists = MusicController.searchByArtist(inputFromSearchBar);
 		albums = MusicController.searchByAlbum(inputFromSearchBar);
 
+		
+		 
+		
 		// if there is a result for titles
 		if (!titles.isEmpty()) {
 			System.out.println("I found\n" + titles);

@@ -36,7 +36,7 @@ public class ClientView extends JPanel {
 	/**
 	 * This search field is used in SearchFunctionListener
 	 */
-	static JTextField search = new RoundJTextField("What do you want to listen to",20);
+	private static JTextField search = new RoundJTextField("What do you want to listen to",20);
 
 	/**
 	 * This string changes what the result buttons say and is changes using
@@ -47,14 +47,12 @@ public class ClientView extends JPanel {
 	/**
 	 * This is the JFrame that needs to be killed every page refresh
 	 */
-	static JFrame clientControl;
-
-	/**
-	 * this is the main view that the client will see
-	 */
+	private static JFrame clientControl;
+	
 
 	/**
 	 * This method calls up the initial clientView screen
+	 * this is the main view that the client will see
 	 */
 	public static void SetupClient() {
 
@@ -283,5 +281,24 @@ public class ClientView extends JPanel {
 		clientControl.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		clientControl.setResizable(false);
 
+	}
+	
+	//GETTERS AND SETTERS
+	public static JTextField getSearch() {
+		return search;
+	}
+
+	public static void setSearch(JTextField search) {
+		ClientView.search = search;
+	}
+
+
+
+	public static JFrame getClientControl() {
+		return clientControl;
+	}
+
+	public static void setClientControl(JFrame clientControl) {
+		ClientView.clientControl = clientControl;
 	}
 }

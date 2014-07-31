@@ -24,7 +24,7 @@ public class CoinButtonListener implements ActionListener {
 	int result;
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ClientView.clientControl.dispose();
+		ClientView.getClientControl().dispose();
 		JFrame coinAdd = new JFrame();
 		coinAdd.setSize(200, 100);
 		coinAdd.setVisible(true);

@@ -26,12 +26,12 @@ public class ResultListener implements ActionListener {
 		double moneyValidation = MoneyController.countMoney();
 		if (moneyValidation >= 25) {
 
-			ClientView.clientControl.dispose();
+			ClientView.getClientControl().dispose();
 			System.out
 					.println("Result button has been pressed\nUser has purchased a song");
 			PlayQueueArray pqa = new PlayQueueArray();
 
-			System.out.println(MusicController.searchByTitle(ClientView.search
+			System.out.println(MusicController.searchByTitle(ClientView.getSearch()
 					.getText()));
 			// if the result was a title
 			if (!SearchFunctionListener.titles.isEmpty()) {

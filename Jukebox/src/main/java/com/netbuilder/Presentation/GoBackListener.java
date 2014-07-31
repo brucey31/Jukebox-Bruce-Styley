@@ -41,8 +41,8 @@ public class GoBackListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("Admin Go Back Button has been pressed");
-		AdminView.adminControl.dispose();
-		ClientView.clientControl.dispose();
+		AdminView.getAdminControl().dispose();
+		ClientView.getClientControl().dispose();
 		JFrame adminEntry = new JFrame();
 		adminEntry.setSize(200, 100);
 		adminEntry.setVisible(true);

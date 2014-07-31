@@ -14,7 +14,7 @@ public class MouseViewListener implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	ClientView.search.setText("");
+	ClientView.getSearch().setText("");
 		
 	}
 

@@ -26,10 +26,11 @@ static String password;
  * This is the set password for the admin account
  */
 final String setPassword = "admin";
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Kills the clientView
-		ClientView.clientControl.dispose();
+		ClientView.getClientControl().dispose();
 		JFrame adminEntry = new JFrame();
 		adminEntry.setSize(200, 100);
 		adminEntry.setVisible(true);

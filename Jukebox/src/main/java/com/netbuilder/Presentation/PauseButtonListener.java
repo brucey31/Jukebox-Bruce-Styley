@@ -12,10 +12,10 @@ import com.netbuilder.Service.PlayPauseSkip;
  * @version 1.0
  */
 public class PauseButtonListener implements ActionListener {
-
+	PlayPauseSkip pps = new PlayPauseSkip();
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		PlayPauseSkip pps = new PlayPauseSkip();
+		
 		pps.pauseSong();
 		
 	}
