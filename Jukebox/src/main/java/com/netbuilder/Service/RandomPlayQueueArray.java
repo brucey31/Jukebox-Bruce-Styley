@@ -30,7 +30,7 @@ public class RandomPlayQueueArray extends PlayQueueArray {
 	 * 
 	 * @return
 	 */
-	public List<Music> SetOffShufflePlaylist() {
+	public List<Music> setOffShufflePlaylist() {
 		System.out.println("Creating Entity Manager");
 
 		// You need a entity manager factory to make an entity manager which

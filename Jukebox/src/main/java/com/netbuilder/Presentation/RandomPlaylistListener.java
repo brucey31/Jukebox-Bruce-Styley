@@ -19,7 +19,7 @@ public class RandomPlaylistListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		rpqa.SetOffShufflePlaylist();
+		rpqa.setOffShufflePlaylist();
 		if (!rpqa.shuffleThread.isAlive()) {
 			rpqa.shuffleThread.start();
 		}
