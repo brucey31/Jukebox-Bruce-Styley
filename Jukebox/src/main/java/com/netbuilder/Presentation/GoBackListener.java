@@ -68,11 +68,14 @@ public class GoBackListener implements ActionListener {
 			if (password.equals((setPassword))) {
 				// prsfq.stop();
 
-				// Ran out of time to sort playQueue problem out so the whole
-				// system
-				// resets when you exit the admin mode to completely clear
-				// playQueue
-				System.exit(0);
+				List<Music> tempQueue = PlayQueueArray.getPlayQueue();
+				tempQueue.removeAll(tempQueue);
+				PlayQueueArray.setPlayQueue(tempQueue);
+				
+				List<String> tempURL = PlayQueueArray.getURL();
+				tempURL.removeAll(tempURL);
+				PlayQueueArray.setPlayQueue(tempQueue);
+//				System.exit(0);
 				ClientView.setupClient();
 
 			}

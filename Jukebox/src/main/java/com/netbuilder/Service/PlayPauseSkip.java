@@ -1,6 +1,10 @@
 package com.netbuilder.Service;
 
+import java.util.List;
+
 import javax.swing.JOptionPane;
+
+import com.netbuilder.DataAccess.Music;
 
 /**
  * This class holds methods that pause, skip and play music (I.e. controller
@@ -61,8 +65,15 @@ public class PlayPauseSkip extends PlayQueueArray {
 		}
 
 		if (!shuffleThread.isAlive() && !musicThread.isAlive()) {
+			List<Music> tempQueue = getPlayQueue();
+			tempQueue.removeAll(tempQueue);
+			setPlayQueue(tempQueue);
+			
+			List<String> tempURL = getURL();
+			tempURL.removeAll(tempURL);
+			setPlayQueue(tempQueue);
 			System.out
-					.println("The Skip Button was pressed and neither string was alive\n");
+					.println("The Skip Button was pressed and neither string was alive\nThe playQueue and URl lists have been emptied");
 		}
 
 	}

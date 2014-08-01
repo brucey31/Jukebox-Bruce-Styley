@@ -37,7 +37,7 @@ public class SearchFunctionListener extends AbstractAction {
 	static List<Music> albums;
 
 	public void actionPerformed(ActionEvent evt) {
-		ClientView.getClientControl().dispose();
+		
 
 		String inputFromSearchBar = com.netbuilder.Presentation.ClientView.getSearch()
 				.getText();
@@ -53,6 +53,7 @@ public class SearchFunctionListener extends AbstractAction {
 		
 		// if there is a result for titles
 		if (!titles.isEmpty()) {
+			ClientView.getClientControl().dispose();
 			System.out.println("I found\n" + titles);
 			ClientView.resultString = titles.get(0).getTitle().toString();
 			System.out.println(ClientView.resultString);
@@ -62,6 +63,7 @@ public class SearchFunctionListener extends AbstractAction {
 		}
 		// if there is a result for artist
 		if (!artists.isEmpty()) {
+			ClientView.getClientControl().dispose();
 			System.out.println("I found\n" + artists);
 			ClientView.resultString = artists.get(0).getArtist().toString();
 			System.out.println(ClientView.resultString);
@@ -71,6 +73,7 @@ public class SearchFunctionListener extends AbstractAction {
 		}
 		// if there is a result for album
 		if (!albums.isEmpty()) {
+			ClientView.getClientControl().dispose();
 			System.out.println("I found\n" + albums);
 			ClientView.resultString = (albums.get(0).getAlbum().toString());
 			System.out.println(ClientView.resultString);
@@ -85,7 +88,7 @@ public class SearchFunctionListener extends AbstractAction {
 					"No Results Found", JOptionPane.ERROR_MESSAGE);
 			System.out.println("User typed in a bad search");
 			// refresh clientView
-			ClientView.setupClient();
+			
 		}
 
 	}

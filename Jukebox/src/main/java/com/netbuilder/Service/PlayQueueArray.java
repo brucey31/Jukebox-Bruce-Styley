@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.netbuilder.DataAccess.JukeBox;
+import com.netbuilder.DataAccess.BruceTunes;
 import com.netbuilder.DataAccess.Music;
 
 /**
@@ -31,7 +31,7 @@ public class PlayQueueArray {
 	 * contains filePath strings and is used in the separate threads to play
 	 * songs
 	 */
-	protected volatile static List<String> URL = new ArrayList<String>();;
+	protected volatile static List<String> URL = new ArrayList<String>();
 
 	/**
 	 * This instantiates a new Thread Called "musicThread" which plays plays the
@@ -69,7 +69,7 @@ public class PlayQueueArray {
 	 * @return
 	 */
 	public List<Music> addMultipleToQueue(List<Music> songs) {
-		JukeBox.populatePurchase();
+		BruceTunes.populatePurchase();
 		for (Music music : songs) {
 			playQueue.add(music);
 		}
@@ -170,4 +170,14 @@ public class PlayQueueArray {
 		PlayQueueArray.playQueue = playQueue;
 	}
 
-}
+	public static List<String> getURL() {
+		return URL;
+	}
+
+	public static void setURL(List<String> uRL) {
+		URL = uRL;
+	}
+
+	}
+
+

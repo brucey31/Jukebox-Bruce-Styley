@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.netbuilder.DataAccess.JukeBox;
+import com.netbuilder.DataAccess.BruceTunes;
 
 /**
  * This actionListener class is called when the user pressed the coin button to add money
@@ -43,7 +43,7 @@ public class CoinButtonListener implements ActionListener {
 
 		if (result < 1) {
 			//Persist 25p to Database
-			JukeBox.populateMoney(25);
+			BruceTunes.populateMoney(25);
 			//Validation for User
 			JOptionPane
 					.showConfirmDialog(
@@ -56,7 +56,7 @@ public class CoinButtonListener implements ActionListener {
 
 		else if (result > 0 && result < 2) {
 			//Persist 50p to Database
-			JukeBox.populateMoney(50);
+			BruceTunes.populateMoney(50);
 			//Validation for User
 			JOptionPane
 			.showConfirmDialog(
@@ -69,7 +69,7 @@ public class CoinButtonListener implements ActionListener {
 
 		else if (result > 1) {
 			//Persist £1 to Database
-			JukeBox.populateMoney(100);
+			BruceTunes.populateMoney(100);
 			//Validation for User
 			JOptionPane
 			.showConfirmDialog(

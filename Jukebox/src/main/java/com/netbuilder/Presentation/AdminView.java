@@ -75,7 +75,7 @@ public class AdminView {
 		speechesPlaylist.setContentAreaFilled(false);
 
 		ActionListener reggae = new ReggaeListener();
-		JButton reggaePlaylist = new JButton("Random PlayListOf Reggae");
+		JButton reggaePlaylist = new JButton("Random PlayList Of Reggae");
 		reggaePlaylist.setVisible(true);
 		reggaePlaylist.setPreferredSize(new Dimension(300, 50));
 		reggaePlaylist.addActionListener(reggae);
