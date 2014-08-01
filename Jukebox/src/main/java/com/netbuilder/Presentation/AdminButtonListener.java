@@ -3,12 +3,16 @@ package com.netbuilder.Presentation;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+
+import com.netbuilder.DataAccess.Music;
+import com.netbuilder.Service.PlayQueueArray;
 
 /**
  * This actionListener class is called when the admin button is pressed and goes through a login page
@@ -58,6 +62,14 @@ final String setPassword = "admin";
 					}
 
 					if (password.equals((setPassword))) {
+						List<Music> tempQueue = PlayQueueArray.getPlayQueue();
+						tempQueue.removeAll(tempQueue);
+						PlayQueueArray.setPlayQueue(tempQueue);
+						
+						List<String> tempURL = PlayQueueArray.getURL();
+						tempURL.removeAll(tempURL);
+						PlayQueueArray.setPlayQueue(tempQueue);
+						
 						AdminView.setupAdmin();
 
 					}
